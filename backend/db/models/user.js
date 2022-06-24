@@ -29,7 +29,25 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
-    }
+    },
+    location: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      }
+    },
+    bio: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 256]
+      }
+    },
+    ProfilePic: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 256]
+      }
+    },
   },
   {
     defaultScope: {
