@@ -1,35 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Song = sequelize.define('Song', {
-    title: {
+  const Comment = sequelize.define('Comment', {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1, 30]
-      }
-    },
-    artist: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 30]
-      }
-    },
-    songPic: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
-      }
-    },
-    link: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true
       }
     },
     userId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: true
+      }
+    },
+    songId: {
       type: DataTypes.INTEGER,
       validate: {
         notEmpty: true
@@ -39,5 +24,6 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     // associations can be defined here
+    
   };
 };
