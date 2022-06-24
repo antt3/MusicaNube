@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 256]
+        len: [3, 40]
       }
     },
     hashedPassword: {
@@ -29,7 +29,25 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
-    }
+    },
+    location: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      }
+    },
+    bio: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 256]
+      }
+    },
+    ProfilePic: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 256]
+      }
+    },
   },
   {
     defaultScope: {
@@ -49,6 +67,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Song, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true });
+    User.hasMany(models.Comment, { foreignKey: 'userId', onDelete: 'CASCADE', hooks: true });
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
