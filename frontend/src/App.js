@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SplashPage from "./components/SplashPage";
+
 import * as sessionActions from "./store/session";
+import * as songsActions from "./store/songsReducer";
+
+import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage.js";
 import AllSongs from "./components/AllSongs";
-import * as songsActions from ""
 
 function App() {
     const dispatch = useDispatch();
@@ -19,7 +21,7 @@ function App() {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(fetchPosts());
+        dispatch(songsActions.fetchSongs());
       }, [dispatch]);
   
     return (
