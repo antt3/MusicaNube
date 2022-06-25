@@ -3,12 +3,12 @@ import React from 'react';
 import './Navigation.css';
 
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
+import DemoUserLogin from './DemoUserLogin';
 
-function Navigation({ isLoaded }){
-    const sessionUser = useSelector(state => state.session.user);
+function Navigation({ isLoaded, sessionUser }){
   
     let sessionLinks;
     if (sessionUser) {
@@ -19,18 +19,17 @@ function Navigation({ isLoaded }){
         sessionLinks = (
             <>
                 <LoginFormModal />
-                <NavLink to="/signup">Sign Up</NavLink>
+                <SignupFormModal />
+                <DemoUserLogin />
             </>
         );
     }
   
     return (
-        <ul>
-            <li>
-                <NavLink exact to="/">Home</NavLink>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
+        <div>
+            <NavLink exact to="/">Home</NavLink>
+            {isLoaded && sessionLinks}
+        </div>
     );
 }
 

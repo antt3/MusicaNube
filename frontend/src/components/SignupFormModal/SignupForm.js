@@ -1,27 +1,28 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import './SignupForm.css';
 
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
-function SignupFormPage() {
+function SignupFormPage({ sessionUser }) {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
-    const [email, setEmail] = useState("");
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [location, setLocation] = useState('');
+    const [bio, setBio] = useState('');
+    const [profilePic, setProfilePic] = useState('');
+
+
     const [errors, setErrors] = useState([]);
-  
-    if (sessionUser) return <Redirect to="/" />;
   
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
             setErrors([]);
-            return dispatch(sessionActions.signup({ email, username, password }))
+            return dispatch(sessionActions.signup({ email, username, password, location, bio, profilePic }))
                 .catch(async (res) => {
                     const data = await res.json();
                     if (data && data.errors) setErrors(data.errors);
@@ -69,6 +70,30 @@ function SignupFormPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
+                />
+            </label>
+            <label>
+                Location
+                <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                />
+            </label>
+            <label>
+                Biography
+                <input
+                    type="text"
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                />
+            </label>
+            <label>
+                Profile Picture
+                <input
+                    type="text"
+                    value={profilePic}
+                    onChange={(e) => setProfilePic(e.target.value)}
                 />
             </label>
             <button type="submit">Sign Up</button>
