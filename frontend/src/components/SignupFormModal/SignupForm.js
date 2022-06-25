@@ -81,14 +81,6 @@ function SignupFormPage({ sessionUser }) {
                 />
             </label>
             <label>
-                Location
-                <input
-                    type="text"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                />
-            </label>
-            <label>
                 Biography
                 <input
                     type="text"
