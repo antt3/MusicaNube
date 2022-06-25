@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage.js";
 import AllSongs from "./components/AllSongs";
+import * as songsActions from ""
 
 function App() {
     const dispatch = useDispatch();
@@ -16,6 +17,10 @@ function App() {
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(fetchPosts());
+      }, [dispatch]);
   
     return (
         <>
