@@ -23,7 +23,7 @@ function App() {
             {isLoaded && (
                 <Switch>
                     <Route exact path='/'>
-                        <HomePage sessionUser={sessionUser} />
+                        <HomePage sessionUser={sessionUser} songsState={songsState} />
                     </Route>
                     <Route exact path='/posts'>
                         <AllSongs sessionUser={sessionUser} songsState={songsState} />
