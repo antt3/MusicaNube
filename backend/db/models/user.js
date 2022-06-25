@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         len: [0, 256]
       }
     },
-    ProfilePic: {
+    profilePic: {
       type: DataTypes.STRING,
       validate: {
         len: [0, 256]
