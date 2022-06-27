@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    up: (queryInterface, Sequelize) {
+    up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert(
 	  	  	  'Songs',
 	  	  	  [

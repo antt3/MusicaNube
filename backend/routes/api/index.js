@@ -3,7 +3,6 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const songsRouter = require('./songs.js');
-const { User } = require('../../db/models');
 
 router.use('/session', sessionRouter);
 

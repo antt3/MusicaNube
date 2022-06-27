@@ -18,3 +18,5 @@ router.get(
 		return res.json(songs);
 	})
 );
+
+module.exports = router;
