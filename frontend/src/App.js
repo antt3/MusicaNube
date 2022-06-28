@@ -14,7 +14,7 @@ function App() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
-    const songsState = useSelector(state => state.session.songs);
+    const songs = useSelector(state => state.songsState);
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -22,7 +22,7 @@ function App() {
 
     useEffect(() => {
         dispatch(songsActions.fetchSongs());
-      }, [dispatch]);
+    }, [dispatch]);
   
     return (
         <>
@@ -30,10 +30,10 @@ function App() {
             {isLoaded && (
                 <Switch>
                     <Route exact path='/'>
-                        <HomePage sessionUser={sessionUser} songsState={songsState} />
+                        <HomePage sessionUser={sessionUser} songs={songs} />
                     </Route>
-                    <Route exact path='/posts'>
-                        <AllSongs sessionUser={sessionUser} songsState={songsState} />
+                    <Route exact path='/songs'>
+                        <AllSongs sessionUser={sessionUser} songs={songs} />
                     </Route>
                     
                     <Route exact path='/splash'>

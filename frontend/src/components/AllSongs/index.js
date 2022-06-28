@@ -1,29 +1,34 @@
 import React from 'react';
+import ReactPlayer from "react-player";
 import { Redirect } from 'react-router-dom';
 
 import './AllSongs.css';
 
-const AllSongs = ({ sessionUser, songsState }) => {
+const AllSongs = ({ sessionUser, songs }) => {
+
+
+    // <ReactPlayer
+    //     url={song.link}
+    // />
+
+
     if (!sessionUser) return <Redirect to="/splash" />
 
-    return (
+    return (Object.values(songs).length > 0) ? (
         <div>
-            {songsState.map(song => (
-                <div>
+            {Object.values(songs).map(song => (
+                <div key={song.id} className="song" >
+                    <img src={song.songPic} alt={song.title}></img>
                     <h1>{song.title}</h1>
-                    <figure>
-                        <figcaption>Listen to the T-Rex:</figcaption>
-                        <audio
-                            controls
-                            src={song.link}>
-                                Your browser does not support the
-                                <code>audio</code> element.
-                        </audio>
-                    </figure>
+                    <h2>{song.artist}</h2>
                 </div>
             ))}
+        </div> 
+    ) :  (
+        <div>
         </div>
-    );
+        )
+    ;
 };
 
 export default AllSongs;

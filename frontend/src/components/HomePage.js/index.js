@@ -6,13 +6,14 @@ import AllSongs from "../AllSongs";
 
 import './HomePage.css';
 
-const HomePage = ({ sessionUser, songsState }) => {
+const HomePage = ({ sessionUser, songs }) => {
 
     if (!sessionUser) return <Redirect to="/splash" />;
 
     return (
         <div>
-            <AllSongs sessionUser={sessionUser} songsState={songsState} />
+            <h1>Working on displaying songs...</h1>
+            <AllSongs sessionUser={sessionUser} songs={songs} />
         </div>
     );
 };
