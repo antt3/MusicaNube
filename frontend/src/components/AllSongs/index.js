@@ -15,12 +15,12 @@ const AllSongs = ({ sessionUser, songs }) => {
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (Object.values(songs).length > 0) ? (
-        <div>
+        <div className='all_songs'>
             {Object.values(songs).map(song => (
                 <div key={song.id} className="song" >
-                    <img src={song.songPic} alt={song.title}></img>
-                    <h1>{song.title}</h1>
-                    <h2>{song.artist}</h2>
+                    <img src={song.songPic} alt={song.title} className='songImg'></img>
+                    <p className='title'>{song.title}</p>
+                    <p className='artist'>{song.artist}</p>
                 </div>
             ))}
         </div> 
