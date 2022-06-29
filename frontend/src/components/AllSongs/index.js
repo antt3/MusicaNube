@@ -18,6 +18,15 @@ const AllSongs = ({ sessionUser, songs }) => {
             />
             <div className='all_songs'>
                 {Object.values(songs).map(song => (
+                    song.userId === sessionUser.id ?
+                        <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
+                            <img src={song.songPic} alt={song.title} className='songImg'></img>
+                            <p className='title'>{song.title}</p>
+                            <p className='artist'>{song.artist}</p>
+                            <button className='edit'>Edit</button>
+                            <button className='delete'>Delete</button>
+                        </div>
+                    :
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
                         <p className='title'>{song.title}</p>
