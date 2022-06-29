@@ -12,7 +12,7 @@ module.exports = {
                     link: 'https://soundcloud.com/sublimeofficial/what-i-got-2',
 	  	  	  	  	  userId: 1,
 	  	  	  	  	  createdAt: new Date(),
-	  	  	  	  	  updatedAt: new Date(),
+	  	  	  	  	  updatedAt: new Date()
 	  	  	  	  },
                 {
                     title: 'Day For Day',
@@ -21,7 +21,7 @@ module.exports = {
                     link: 'https://soundcloud.com/kodak-black/day-for-day',
                     userId: 2,
                     createdAt: new Date(),
-                    updatedAt: new Date(),
+                    updatedAt: new Date()
                 },
                 {
                     title: 'Feels Like Summer',
@@ -30,8 +30,89 @@ module.exports = {
                     link: 'https://soundcloud.com/childish-gambino/feels-like-summer',
                     userId: 3,
                     createdAt: new Date(),
-                    updatedAt: new Date(),
-                }
+                    updatedAt: new Date()
+                },
+                {
+                    title: 'Freedom [prod. Redmosk]',
+                    artist: 'CutThroatCrew',
+                    songPic: 'https://i.scdn.co/image/ab67616d0000b2736601bee0fea59cca2f31157a',
+                    link: 'https://soundcloud.com/cutthroatcrew/freedom-prod-redmosk',
+                    userId: 1,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: 'Lil Uzi Vert - 20 Min',
+                    artist: 'Lil Uzi Vert',
+                    songPic: 'https://images.genius.com/50af11dfe454a4aa20544f19b2dd0791.1000x1000x1.png',
+                    link: 'https://soundcloud.com/liluzivert/20-min-1',
+                    userId: 2,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: 'Way Back (Prod. Mikey The Magician)',
+                    artist: 'Shakewell',
+                    songPic: 'https://i.scdn.co/image/ab67616d0000b2736bc693e76e518a53195e0c91',
+                    link: 'https://soundcloud.com/shakewell818/way-back-master-finished',
+                    userId: 3,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: 'Meet Again',
+                    artist: 'MAXO KREAM',
+                    songPic: 'https://i.scdn.co/image/ab67616d0000b273fbd14d4ff83250a51f8aa246',
+                    link: 'https://soundcloud.com/maxo-kream/meet-again',
+                    userId: 1,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: 'Pick It Up (feat. A$AP Rocky) [Prod. By FKi1st and Sosa808]',
+                    artist: 'Famous Dex',
+                    songPic: 'https://upload.wikimedia.org/wikipedia/en/3/3e/PickItUpDexter.jpg',
+                    link: 'https://soundcloud.com/famous_dex1/pick-it-up-dirty-jl-master',
+                    userId: 2,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: '2OUTH2ID3 Prod: WillyGotFlame (video out now)',
+                    artist: 'CRASH RARRI',
+                    songPic: 'https://i.scdn.co/image/ab67616d0000b27377cc1d79ef254b1b24ad212b',
+                    link: 'https://soundcloud.com/rarri223/2outh2id3-prod-willygotflame',
+                    userId: 3,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: 'Choices (Yup)',
+                    artist: 'e40',
+                    songPic: 'https://i.scdn.co/image/ab67616d00001e02be1f3453aef32a126279850f',
+                    link: 'https://soundcloud.com/e40/e-40-choices-yup-new-albums-out-dec-9th',
+                    userId: 1,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: 'Three Little Birds',
+                    artist: 'Bob Marley & The Wailers',
+                    songPic: 'https://i.scdn.co/image/ab67616d0000b2733dad91f4a796045ac25496f3',
+                    link: 'https://soundcloud.com/bob-marley-the-wailers/three-little-birds-album',
+                    userId: 2,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                },
+                {
+                    title: '(Sittin\' On) the Dock of the Bay',
+                    artist: 'Otis Redding',
+                    songPic: 'https://m.media-amazon.com/images/I/71GhROjL9kL._SL1425_.jpg',
+                    link: 'https://soundcloud.com/otisredding/otis-redding-stories-raphael-saddiq-on-sittin-on-the-dock-of-the-bay',
+                    userId: 3,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                }                
             ], {}
         );
     },

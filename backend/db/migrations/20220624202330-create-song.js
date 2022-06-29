@@ -9,11 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(75),
         allowNull: false,
       },
       artist: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(75),
         allowNull: false
       },
       songPic: {
