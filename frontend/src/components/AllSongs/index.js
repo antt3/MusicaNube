@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import ReactPlayer from "react-player";
 import { Redirect } from 'react-router-dom';
 
 import EditSongModal from '../EditSongModal';
 import DeleteSongModal from '../DeleteSongModal';
 import { useSong } from '../../context/songContext';
+import { fetchSongs } from '../../store/songsReducer';
 
 import './AllSongs.css';
 
 const AllSongs = ({ sessionUser, songs }) => {
+    const dispatch = useDispatch();
     const { currentSong, setCurrentSong } = useSong();
+
+    useEffect(() => {
+        dispatch(fetchSongs())
+    }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/splash" />
 

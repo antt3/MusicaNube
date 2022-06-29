@@ -79,7 +79,7 @@ export const removeSong = (songId) => async dispatch => {
   if (response.ok) {
     const song = await response.json();
     dispatch(deleteSong(song))
-    return song;
+    return true;
   }
 };
 

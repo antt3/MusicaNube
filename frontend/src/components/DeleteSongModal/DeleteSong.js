@@ -11,11 +11,14 @@ function DeleteSong({sessionUser, setShowModal, song}) {
     const history = useHistory();
 
     const handleClick = async(e) => {
-        dispatch(songsReducer.removeSong(song));
+        const deleted = await dispatch(songsReducer.removeSong(song));
 
+        console.log(deleted);
+        if (deleted) {
         setShowModal(false);
 
-        history.push('/');
+        return history.push('/songs');
+        }
             
     }
   

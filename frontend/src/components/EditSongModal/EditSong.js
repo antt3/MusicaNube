@@ -33,7 +33,7 @@ function EditSong({sessionUser, setShowModal, song}) {
                 sessionUser,
                 song
             };
-            const returnedSong = dispatch(songsReducer.updateSong(editedSong))
+            const returnedSong = await dispatch(songsReducer.updateSong(editedSong))
             
             if (returnedSong) {
                 reset();

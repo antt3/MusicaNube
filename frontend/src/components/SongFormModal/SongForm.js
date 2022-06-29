@@ -32,7 +32,7 @@ function SongForm({sessionUser, setShowModal}) {
                 link,
                 sessionUser
             };
-            const returnedSong = dispatch(songsReducer.writeSong(newSong))
+            const returnedSong = await dispatch(songsReducer.writeSong(newSong))
             
             if (returnedSong) {
                 reset();

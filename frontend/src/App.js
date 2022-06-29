@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
 import * as sessionActions from "./store/session";
-import * as songsActions from "./store/songsReducer";
+import * as songsReducer from "./store/songsReducer";
 
 import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
@@ -21,7 +21,7 @@ function App() {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(songsActions.fetchSongs());
+        dispatch(songsReducer.fetchSongs());
     }, [dispatch]);
   
     return (
