@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import { Redirect } from 'react-router-dom';
 
 import EditSongModal from '../EditSongModal';
+import DeleteSongModal from '../DeleteSongModal';
 import { useSong } from '../../context/songContext';
 
 import './AllSongs.css';
@@ -25,7 +26,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                             <p className='title'>{song.title}</p>
                             <p className='artist'>{song.artist}</p>
                             <EditSongModal sessionUser={sessionUser} song={song} />
-                            <button className='delete'>Delete</button>
+                            <DeleteSongModal sessionUser={sessionUser} song={song} />
                         </div>
                     :
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>

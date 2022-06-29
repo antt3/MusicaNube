@@ -2,7 +2,7 @@ import React from 'react';
 
 import './DeleteSong.css';
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as songsReducer from "../../store/songsReducer";
 
