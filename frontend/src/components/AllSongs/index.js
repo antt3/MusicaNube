@@ -6,24 +6,23 @@ import './AllSongs.css';
 
 const AllSongs = ({ sessionUser, songs }) => {
 
-
-    // <ReactPlayer
-    //     url={song.link}
-    // />
-
-
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (Object.values(songs).length > 0) ? (
-        <div className='all_songs'>
-            {Object.values(songs).map(song => (
-                <div key={song.id} className="song" >
-                    <img src={song.songPic} alt={song.title} className='songImg'></img>
-                    <p className='title'>{song.title}</p>
-                    <p className='artist'>{song.artist}</p>
-                </div>
-            ))}
-        </div> 
+        <>
+            <ReactPlayer
+                url='https://soundcloud.com/rocketdagoon/rocket-da-goon-back-shot-boy'
+            />
+            <div className='all_songs'>
+                {Object.values(songs).map(song => (
+                    <div key={song.id} className="song" >
+                        <img src={song.songPic} alt={song.title} className='songImg'></img>
+                        <p className='title'>{song.title}</p>
+                        <p className='artist'>{song.artist}</p>
+                    </div>
+                ))}
+            </div>
+        </>
     ) :  (
         <div>
         </div>

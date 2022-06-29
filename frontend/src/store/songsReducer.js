@@ -44,6 +44,45 @@ export const fetchSongs = () => async (dispatch) => {
   };
 };
 
+export const writeSong = (payload) => async dispatch => {
+
+  const response = await csrfFetch('/api/songs', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(addSong(song));
+    return song;
+  }
+};
+
+export const updateSong = (payload) => async dispatch => {
+  const response = await csrfFetch(`/api/songs/${payload.singleSong.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(editSong(song));
+    return song;
+  }
+};
+
+export const removeSong = (songId) => async dispatch => {
+  const response = await csrfFetch (`/api/songs/${songId.id}`, {
+    method: 'DELETE',
+  })
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(deleteSong(song))
+    return song;
+  }
+};
+
 const initialState = {};
 
 const songReducer = (state = initialState, action) => {
@@ -51,9 +90,20 @@ const songReducer = (state = initialState, action) => {
   
     switch (action.type) {
       case LOAD_SONGS: 
-        newState = {...state};
-        action.songs.forEach((song) => newState[song.id] = song);
-        return newState
+          newState = {...state};
+          action.songs.forEach((song) => newState[song.id] = song);
+          return newState
+      case ADD_SONG:
+          newState = {...state}
+          newState = { ...state, [action.song.id]: action.song };
+          return newState
+      case EDIT_SONG:
+          newState = {...state}
+          return { ...state, [ action.song.id ]: action.song };
+      case DELETE_SONG:
+          newState = { ...state };
+          delete newState[action.song.id];
+          return newState;
     default:
         return state;
     }

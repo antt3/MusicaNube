@@ -12,7 +12,6 @@ const HomePage = ({ sessionUser, songs }) => {
 
     return (
         <div>
-            <h1>Working on displaying songs...</h1>
             <AllSongs sessionUser={sessionUser} songs={songs} />
         </div>
     );
