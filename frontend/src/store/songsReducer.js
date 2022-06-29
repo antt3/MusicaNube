@@ -60,7 +60,7 @@ export const writeSong = (payload) => async dispatch => {
 };
 
 export const updateSong = (payload) => async dispatch => {
-  const response = await csrfFetch(`/api/songs/${payload.singleSong.id}`, {
+  const response = await csrfFetch(`/api/songs/${payload.song.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)

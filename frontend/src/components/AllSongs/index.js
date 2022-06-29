@@ -2,6 +2,7 @@ import React from 'react';
 import ReactPlayer from "react-player";
 import { Redirect } from 'react-router-dom';
 
+import EditSongModal from '../EditSongModal';
 import { useSong } from '../../context/songContext';
 
 import './AllSongs.css';
@@ -23,7 +24,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                             <img src={song.songPic} alt={song.title} className='songImg'></img>
                             <p className='title'>{song.title}</p>
                             <p className='artist'>{song.artist}</p>
-                            <button className='edit'>Edit</button>
+                            <EditSongModal sessionUser={sessionUser} song={song} />
                             <button className='delete'>Delete</button>
                         </div>
                     :
