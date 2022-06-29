@@ -87,10 +87,10 @@ module.exports = {
                     updatedAt: new Date()
                 },
                 {
-                    title: 'Choices (Yup)',
-                    artist: 'e40',
-                    songPic: 'https://i.scdn.co/image/ab67616d00001e02be1f3453aef32a126279850f',
-                    link: 'https://soundcloud.com/e40/e-40-choices-yup-new-albums-out-dec-9th',
+                    title: 'Interstate 10 [Prod. $crim]',
+                    artist: 'CHETTA',
+                    songPic: 'https://i1.sndcdn.com/artworks-000131261375-ovulca-t240x240.jpg',
+                    link: 'https://soundcloud.com/j-chetta/interstate-10-prod-crim',
                     userId: 1,
                     createdAt: new Date(),
                     updatedAt: new Date()
