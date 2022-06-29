@@ -2,12 +2,18 @@ import React from "react";
 
 import { Redirect } from "react-router-dom";
 
-const HomePage = ({ sessionUser }) => {
+import AllSongs from "../AllSongs";
+
+import './HomePage.css';
+
+const HomePage = ({ sessionUser, songs }) => {
 
     if (!sessionUser) return <Redirect to="/splash" />;
 
     return (
-        <h1>Working on homepage</h1>
+        <div>
+            <AllSongs sessionUser={sessionUser} songs={songs} />
+        </div>
     );
 };
 

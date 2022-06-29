@@ -7,14 +7,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 30]
+        len: [1, 75]
       }
     },
     artist: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 30]
+        len: [1, 75]
       }
     },
     songPic: {
