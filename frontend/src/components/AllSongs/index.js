@@ -2,20 +2,23 @@ import React from 'react';
 import ReactPlayer from "react-player";
 import { Redirect } from 'react-router-dom';
 
+import { useSong } from '../../context/songContext';
+
 import './AllSongs.css';
 
 const AllSongs = ({ sessionUser, songs }) => {
+    const { currentSong, setCurrentSong } = useSong();
 
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (Object.values(songs).length > 0) ? (
         <>
             <ReactPlayer
-                url='https://soundcloud.com/rocketdagoon/rocket-da-goon-back-shot-boy'
+                url={currentSong}
             />
             <div className='all_songs'>
                 {Object.values(songs).map(song => (
-                    <div key={song.id} className="song" >
+                    <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
                         <p className='title'>{song.title}</p>
                         <p className='artist'>{song.artist}</p>
