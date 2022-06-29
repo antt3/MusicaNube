@@ -10,16 +10,15 @@ function DeleteSong({sessionUser, setShowModal, song}) {
     const dispatch = useDispatch();
     const history = useHistory();
 
+
     const handleClick = async(e) => {
         const deleted = await dispatch(songsReducer.removeSong(song));
 
-        console.log(deleted);
         if (deleted) {
         setShowModal(false);
 
-        return history.push('/songs');
-        }
-            
+        return history.push('/');
+        }  
     }
   
     if (!sessionUser) return <Redirect to="/splash" />;
