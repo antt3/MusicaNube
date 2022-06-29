@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import SongForm from './SongForm';
 
-function SongFormModal() {
+function SongFormModal({sessionUser}) {
     const [showModal, setShowModal] = useState(false);
   
     return (
@@ -10,7 +10,7 @@ function SongFormModal() {
             <button onClick={() => setShowModal(true)}>Add A Song</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <SongForm />
+                    <SongForm sessionUser={sessionUser} setShowModal={setShowModal}/>
                 </Modal>
             )}
         </>

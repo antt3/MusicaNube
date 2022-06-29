@@ -7,13 +7,17 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DemoUserLogin from './DemoUserLogin';
+import SongFormModal from '../SongFormModal';
 
 function Navigation({ isLoaded, sessionUser }){
   
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <ProfileButton user={sessionUser} />
+                <SongFormModal sessionUser={sessionUser} />
+            </>
         );
     } else {
         sessionLinks = (
