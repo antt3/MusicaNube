@@ -60,7 +60,7 @@ export const writeSong = (payload) => async dispatch => {
 };
 
 export const updateSong = (payload) => async dispatch => {
-  const response = await csrfFetch(`/api/songs/${payload.singleSong.id}`, {
+  const response = await csrfFetch(`/api/songs/${payload.song.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
@@ -79,7 +79,7 @@ export const removeSong = (songId) => async dispatch => {
   if (response.ok) {
     const song = await response.json();
     dispatch(deleteSong(song))
-    return song;
+    return true;
   }
 };
 
@@ -102,7 +102,7 @@ const songReducer = (state = initialState, action) => {
           return { ...state, [ action.song.id ]: action.song };
       case DELETE_SONG:
           newState = { ...state };
-          delete newState[action.song.id];
+          delete newState[action.song];
           return newState;
     default:
         return state;
