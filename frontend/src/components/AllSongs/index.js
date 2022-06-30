@@ -32,7 +32,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                     song.userId === sessionUser.id ?
                         <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                             <img src={song.songPic} alt={song.title} className='songImg'></img>
-                            <p className='title_artist' onClick={()=> history.push(`/songs/${song.id}`)}>{song.title} - - - By: {song.artist}</p>
+                            <p className='title_artist' onClick={(e)=> onClick(e, song)}>{song.title} - - - By: {song.artist}</p>
                             {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
                             <EditSongModal sessionUser={sessionUser} song={song} />
                             <DeleteSongModal sessionUser={sessionUser} song={song} />
