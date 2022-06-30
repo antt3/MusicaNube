@@ -28,30 +28,34 @@ function App() {
         dispatch(commentsReducer.fetchComments());
     }, [dispatch]);
   
-    return (
-        <>
-            <Navigation isLoaded={isLoaded} sessionUser={sessionUser} />
-            {isLoaded && (
-                <Switch>
-                    <Route exact path='/'>
-                        <HomePage sessionUser={sessionUser} songs={songs} />
-                    </Route>
-                    <Route exact path='/songs'>
-                        <AllSongs sessionUser={sessionUser} songs={songs} />
-                    </Route>
-                    <Route exact path='/songs/:id'>
-                        <SingleSong sessionUser={sessionUser} songs={songs} comments={comments} />
-                    </Route>
-                    <Route exact path='/splash'>
-                        <SplashPage sessionUser={sessionUser} />
-                    </Route>
-                    <Route>
-                        <h1>Page Not Found</h1>
-                    </Route>
-                </Switch>
-            )}
-        </>
-    );
+    if (!!sessionUser && !!songs && !!comments) {
+        return (
+            <>
+                <Navigation isLoaded={isLoaded} sessionUser={sessionUser} />
+                {isLoaded && (
+                    <Switch>
+                        <Route exact path='/'>
+                            <HomePage sessionUser={sessionUser} songs={songs} />
+                        </Route>
+                        <Route exact path='/songs'>
+                            <AllSongs sessionUser={sessionUser} songs={songs} />
+                        </Route>
+                        <Route exact path='/songs/:id'>
+                            <SingleSong sessionUser={sessionUser} songs={songs} comments={comments} />
+                        </Route>
+                        <Route exact path='/splash'>
+                            <SplashPage sessionUser={sessionUser} />
+                        </Route>
+                        <Route>
+                            <h1>Page Not Found</h1>
+                        </Route>
+                    </Switch>
+                )}
+            </>
+        );
+    } else {
+        return (<></>)
+    }
 }
 
 export default App;
