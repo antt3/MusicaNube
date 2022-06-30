@@ -7,6 +7,8 @@ import * as commentsReducer from '../../store/commentsReducer';
 
 import EditSongModal from '../EditSongModal';
 import DeleteSongModal from '../DeleteSongModal';
+import CommentFormModal from '../CommentFormModal';
+import DeleteCommentModal from '../DeleteCommentModal';
 
 import { useSong } from '../../context/songContext';
 
@@ -45,7 +47,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                         return (
                           <>
                             <p key={songComment.id}>{songComment.content}</p>
-                            <DeleteCommentModal sessionUser={sessionUser} postComments={postComment} />
+                            <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
                           </>
                         );
                       } else { return (<p key={songComment.id}>{songComment.content}</p>)}
@@ -71,7 +73,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                             return (
                                 <>
                                     <p key={songComment.id}>{songComment.content}</p>
-                                    <DeleteCommentModal sessionUser={sessionUser} postComment={postComment} />
+                                    <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
                                 </>
                             );
                         } else { return (<p key={songComment.id}>{songComment.content}</p>);}
