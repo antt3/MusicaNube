@@ -29,10 +29,7 @@ router.post(
 	'/',
 	validateComment,
 	asyncHandler(async (req, res) => {
-        const { content, sessionUser, song } = req.body;
-        const userId = sessionUser.id;
-        const songId = song.id;
-		const comment = await Comment.create({content, userId, songId});
+		const comment = await Comment.create(req.body);
 
 		return res.json(comment);
 	})

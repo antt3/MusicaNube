@@ -25,81 +25,79 @@ const SingleSong = ({sessionUser, songs, comments }) => {
     }, [dispatch]);
 
     console.log('----songs Array----', Object.values(songs))
-    if (Object.values(songs) > 0) {
-        if (!sessionUser) return <Redirect to="/splash" />;
-        const song = Object.values(songs).find(song => song.id === +id);
-        let songComments = {};
+    if (!sessionUser) return <Redirect to="/splash" />;
+    const song = Object.values(songs).find(song => song.id === +id);
+    
+    let songComments = {};
+    if (Object.values(comments) > 0) songComments = Object.values(comments).filter(comment => comment.songId === song.id);
+    console.log('----here----', songs);
 
-        if (Object.values(comments) > 0) songComments = Object.values(comments).filter(comment => comment.songId === song.id);
-        console.log('----here----', songs);
-        if (song.userId === sessionUser.id) {
-            console.log('=====here-----')
-            return (
-              <> 
+    if (song.userId === sessionUser.id) {
+        console.log('=====here-----')
+
+        return (
+          <> 
+            <article>
+                <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
+                    <img src={song.songPic} alt={song.title} className='songImg'></img>
+                    <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
+                    <p className='song_username'>{song.User.username}</p>
+                    <EditSongModal sessionUser={sessionUser} song={song} />
+                    <DeleteSongModal sessionUser={sessionUser} song={song} />
+                </div>
+                <CommentFormModal sessionUser={sessionUser} song={song} />
+                <h1>{Object.values(songComments).length} comments</h1>
+                <div>
+                    { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
+                        if (songComment.userId === sessionUser.id) {
+                            return (
+                                <div key={songComment.id}>
+                                    <p>{songComment.content}</p>
+                                    <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
+                                </div>
+                            );
+                        } else { 
+                            return (
+                                <div key={songComment.id}>
+                                    <p>{songComment.content}</p>
+                                </div>
+                            )}
+                    }) : <p>There are no comments yet...</p>}
+                </div>
+            </article>
+          </>
+        );
+    } else {
+        return (
+            <>
                 <article>
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
                         <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
                         <p className='song_username'>{song.User.username}</p>
-                        <EditSongModal sessionUser={sessionUser} song={song} />
-                        <DeleteSongModal sessionUser={sessionUser} song={song} />
                     </div>
                     <CommentFormModal sessionUser={sessionUser} song={song} />
                     <h1>{Object.values(songComments).length} comments</h1>
                     <div>
-                        { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
-                            if (songComment.userId === sessionUser.id) {
-                                return (
-                                    <div key={songComment.id}>
-                                        <p>{songComment.content}</p>
-                                        <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
-                                    </div>
-                                );
-                            } else { 
-                                return (
-                                    <div key={songComment.id}>
-                                        <p>{songComment.content}</p>
-                                    </div>
-                                )}
-                        }) : <p>There are no comments yet...</p>}
-                    </div>
-                </article>
-              </>
-            );
-        } else {
-            return (
-                <>
-                    <article>
-                        <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
-                            <img src={song.songPic} alt={song.title} className='songImg'></img>
-                            <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                            <p className='song_username'>{song.User.username}</p>
-                        </div>
-                        <CommentFormModal sessionUser={sessionUser} song={song} />
-                        <h1>{Object.values(songComments).length} comments</h1>
-                        <div>
-                        { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
-                            if (songComment.userId === sessionUser.id) {
-                                return (
-                                    <div key={songComment.id}>
-                                        <p>{songComment.content}</p>
-                                        <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
-                                    </div>
-                                );
-                            } else {
-                                return (
+                    { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
+                        if (songComment.userId === sessionUser.id) {
+                            return (
                                 <div key={songComment.id}>
                                     <p>{songComment.content}</p>
+                                    <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
                                 </div>
-                            )}
-                        }) : <p>There are no comments yet...</p>}
-                        </div>
-                    </article>
-                </>
-            );  
-        }
-    } else {
-        return (<></>)
+                            );
+                        } else {
+                            return (
+                            <div key={songComment.id}>
+                                <p>{songComment.content}</p>
+                            </div>
+                        )}
+                    }) : <p>There are no comments yet...</p>}
+                    </div>
+                </article>
+            </>
+        );  
     }
 };
 

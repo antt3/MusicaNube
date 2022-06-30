@@ -16,12 +16,14 @@ const CommentForm = ({sessionUser, setShowModal, song}) => {
   
     const handleSubmit = async(e) => {
         e.preventDefault();
+        const userId = sessionUser.id;
+        const songId = song.id;
         if (content !== "") {
             setErrors([]);
             const comment = {
                 content,
-                sessionUser,
-                song
+                userId,
+                songId
             };
             const returnedComment = await dispatch(commentsReducer.writeComment(comment));
             
@@ -30,7 +32,7 @@ const CommentForm = ({sessionUser, setShowModal, song}) => {
 
                 setShowModal(false);
 
-                return history.push(`/songs/${returnedComment.postId}`);
+                return history.push(`/songs/${returnedComment.songId}`);
             }
             
         }

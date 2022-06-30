@@ -56,7 +56,7 @@ export const removeComment = (payload) => async dispatch => {
   if (response.ok) {
     const comment = await response.json();
     dispatch(deleteComment(comment))
-    return comment;
+    return true;
   }
 };
 
