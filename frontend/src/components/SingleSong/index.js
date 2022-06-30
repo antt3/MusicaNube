@@ -24,11 +24,14 @@ const SingleSong = ({sessionUser, songs, comments }) => {
         dispatch(commentsReducer.fetchComments());
     }, [dispatch]);
 
-    if (!sessionUser) return <Redirect to="/splash" />;
-    if (!!songs && !!comments) {
+    console.log('----songs Array----', Object.values(songs))
+    if (Object.values(songs) > 0) {
+        if (!sessionUser) return <Redirect to="/splash" />;
         const song = Object.values(songs).find(song => song.id === +id);
-        const songComments = Object.values(comments).filter(comment => comment.songId === song.id);
+        let songComments = {};
 
+        if (Object.values(comments) > 0) songComments = Object.values(comments).filter(comment => comment.songId === song.id);
+        console.log('----here----', songs);
         if (song.userId === sessionUser.id) {
             console.log('=====here-----')
             return (
@@ -44,15 +47,20 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     <CommentFormModal sessionUser={sessionUser} song={song} />
                     <h1>{Object.values(songComments).length} comments</h1>
                     <div>
-                        { songComments.length > 0 ? songComments.map((songComment) => {
-                          if (songComment.userId === sessionUser.id) {
-                            return (
-                              <>
-                                <p key={songComment.id}>{songComment.content}</p>
-                                <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
-                              </>
-                            );
-                          } else { return (<p key={songComment.id}>{songComment.content}</p>)}
+                        { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
+                            if (songComment.userId === sessionUser.id) {
+                                return (
+                                    <div key={songComment.id}>
+                                        <p>{songComment.content}</p>
+                                        <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
+                                    </div>
+                                );
+                            } else { 
+                                return (
+                                    <div key={songComment.id}>
+                                        <p>{songComment.content}</p>
+                                    </div>
+                                )}
                         }) : <p>There are no comments yet...</p>}
                     </div>
                 </article>
@@ -70,15 +78,20 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                         <CommentFormModal sessionUser={sessionUser} song={song} />
                         <h1>{Object.values(songComments).length} comments</h1>
                         <div>
-                        { songComments.length > 0 ? songComments.map((songComment) => {
+                        { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
                             if (songComment.userId === sessionUser.id) {
                                 return (
-                                    <>
-                                        <p key={songComment.id}>{songComment.content}</p>
+                                    <div key={songComment.id}>
+                                        <p>{songComment.content}</p>
                                         <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
-                                    </>
+                                    </div>
                                 );
-                            } else { return (<p key={songComment.id}>{songComment.content}</p>);}
+                            } else {
+                                return (
+                                <div key={songComment.id}>
+                                    <p>{songComment.content}</p>
+                                </div>
+                            )}
                         }) : <p>There are no comments yet...</p>}
                         </div>
                     </article>
