@@ -10,13 +10,14 @@ const DeleteComment = ({sessionUser, setShowModal, songComment}) => {
     const history = useHistory();
 
     const handleClick = async(e) => {
+        const songId = songComment.songId;
         const deleted = await dispatch(commentsReducer.removeComment(songComment));
 
         if (deleted) {
 
             setShowModal(false);
 
-            return history.push('/');
+            return history.push(`/songs/${songId}`);
 
         };
     };

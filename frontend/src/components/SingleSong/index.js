@@ -24,16 +24,14 @@ const SingleSong = ({sessionUser, songs, comments }) => {
         dispatch(commentsReducer.fetchComments());
     }, [dispatch]);
 
-    console.log('----songs Array----', Object.values(songs))
     if (!sessionUser) return <Redirect to="/splash" />;
     const song = Object.values(songs).find(song => song.id === +id);
-    
-    let songComments = {};
-    if (Object.values(comments) > 0) songComments = Object.values(comments).filter(comment => comment.songId === song.id);
-    console.log('----here----', songs);
+
+    const songComments = Object.values(comments).filter(comment => comment.songId === song.id);
+    console.log('----s here----', songs);
 
     if (song.userId === sessionUser.id) {
-        console.log('=====here-----')
+        console.log('=====sC here-----', songComments);
 
         return (
           <> 
@@ -48,7 +46,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                 <CommentFormModal sessionUser={sessionUser} song={song} />
                 <h1>{Object.values(songComments).length} comments</h1>
                 <div>
-                    { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
+                    { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
                             return (
                                 <div key={songComment.id}>
