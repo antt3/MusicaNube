@@ -22,7 +22,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
     const songComments = Object.values(comments).filter(comment => comment.songId === song.id);
 
     useEffect(() => {
-        dispatch(songsReducer.fetchPosts());
+        dispatch(songsReducer.fetchSongs());
         dispatch(commentsReducer.fetchComments());
     }, [dispatch]);
 

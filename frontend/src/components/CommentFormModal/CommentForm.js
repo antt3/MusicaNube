@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 
 import * as commentsReducer from "../../store/commentsReducer";
 
-import './CommentOnPost.css';
+import './CommentForm.css';
 
 const CommentForm = ({sessionUser, setShowModal, song}) => {
     const dispatch = useDispatch();
