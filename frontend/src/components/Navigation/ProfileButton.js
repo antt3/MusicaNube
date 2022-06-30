@@ -38,7 +38,7 @@ function ProfileButton({ user }) {
             {showMenu && (
                 <ul className="profile-dropdown">
                     <li>
-                        <button onClick={()=> history.push('/profile')}>Profile</button>
+                        <button onClick={()=> history.push(`/profiles/${user.id}`)}>Profile</button>
                     </li>
                     <li>
                         <button onClick={logout}>Log Out</button>

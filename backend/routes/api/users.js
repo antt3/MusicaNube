@@ -8,6 +8,14 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
+router.get(
+	'/',
+	asyncHandler(async (req, res) => {
+		const user = await User.findbyPk(req.params.id);
+		return res.json(user);
+	})
+);
+
 const validateSignup = [
     check('email')
         .exists({ checkFalsy: true })

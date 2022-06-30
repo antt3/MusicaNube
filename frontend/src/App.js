@@ -11,6 +11,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage.js";
 import AllSongs from "./components/AllSongs";
 import SingleSong from "./components/SingleSong";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
     const dispatch = useDispatch();
@@ -41,6 +42,9 @@ function App() {
                     </Route>
                     <Route exact path='/songs/:id'>
                         <SingleSong sessionUser={sessionUser} songs={songs} comments={comments} />
+                    </Route>
+                    <Route exact path='/profiles/:id'>
+                        <ProfilePage sessionUser={sessionUser} songs={songs} comments={comments} />
                     </Route>
                     <Route exact path='/splash'>
                         <SplashPage sessionUser={sessionUser} />
