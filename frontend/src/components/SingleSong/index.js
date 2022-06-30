@@ -34,11 +34,8 @@ const SingleSong = ({sessionUser, songs, comments }) => {
     };
 
     const songComments = Object.values(comments).filter(comment => comment.songId === song.id);
-    console.log('----s here----', songs);
-    console.log('----ss here----', song);
 
     if (song.userId === sessionUser.id) {
-        console.log('=====sC here-----', songComments);
 
         return (
           <> 
@@ -51,7 +48,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     <DeleteSongModal sessionUser={sessionUser} song={song} />
                 </div>
                 <CommentFormModal sessionUser={sessionUser} song={song} />
-                <h1>{Object.values(songComments).length} comments</h1>
+                <h1>{songComments.length} comments</h1>
                 <div>
                     { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
@@ -82,9 +79,9 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                         <p className='song_username'>{song.User.username}</p>
                     </div>
                     <CommentFormModal sessionUser={sessionUser} song={song} />
-                    <h1>{Object.values(songComments).length} comments</h1>
+                    <h1>{songComments.length} comments</h1>
                     <div>
-                    { Object.values(songComments).length > 0 ? Object.values(songComments).map((songComment) => {
+                    { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
                             return (
                                 <div key={songComment.id}>
