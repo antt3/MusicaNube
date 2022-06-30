@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import ReactPlayer from "react-player";
 import { Redirect, useHistory } from 'react-router-dom';
-
 import EditSongModal from '../EditSongModal';
 import DeleteSongModal from '../DeleteSongModal';
 import { useSong } from '../../context/songContext';
@@ -13,7 +11,7 @@ import './AllSongs.css';
 const AllSongs = ({ sessionUser, songs }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { currentSong, setCurrentSong } = useSong();
+    const { setCurrentSong } = useSong();
 
     useEffect(() => {
         dispatch(fetchSongs())
@@ -21,13 +19,8 @@ const AllSongs = ({ sessionUser, songs }) => {
 
     if (!sessionUser) return <Redirect to="/splash" />
 
-    console.log('---songsArr---', Object.values(songs));
-
     return (Object.values(songs).length > 0) ? (
         <>
-            <ReactPlayer
-                url={currentSong}
-            />
             <div className='all_songs'>
                 {Object.values(songs).map(song => (
                     song.userId === sessionUser.id ?
