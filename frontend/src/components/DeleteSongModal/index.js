@@ -6,14 +6,14 @@ function DeleteSongModal({sessionUser, song}) {
     const [showModal, setShowModal] = useState(false);
   
     return (
-        <>
+        <div onClick={(e)=> e.stopPropagation()}>
             <button className='delete' onClick={() => setShowModal(true)}>Delete</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <DeleteSong sessionUser={sessionUser} setShowModal={setShowModal} song={song} />
                 </Modal>
             )}
-        </>
+        </div>
     );
 }
 

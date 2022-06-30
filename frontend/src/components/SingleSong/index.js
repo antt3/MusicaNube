@@ -44,8 +44,8 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     <img src={song.songPic} alt={song.title} className='songImg'></img>
                     <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
                     {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
-                    <EditSongModal sessionUser={sessionUser} song={song} />
-                    <DeleteSongModal sessionUser={sessionUser} song={song} />
+                    <EditSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
+                    <DeleteSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
                 </div>
                 <CommentFormModal sessionUser={sessionUser} song={song} />
                 <h1>{songComments.length} comments</h1>
