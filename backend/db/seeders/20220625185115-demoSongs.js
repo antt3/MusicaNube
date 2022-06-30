@@ -3,17 +3,17 @@
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert(
-	  	  	  'Songs',
-	  	  	  [
-	  	  	  	  {
-	  	  	  	  	  title: 'What I Got',
-                    artist: 'Sublime',
-                    songPic: 'https://i.scdn.co/image/ab67616d0000b2738fc4b0dcfb9509553f195c85',
-                    link: 'https://soundcloud.com/sublimeofficial/what-i-got-2',
-	  	  	  	  	  userId: 1,
-	  	  	  	  	  createdAt: new Date(),
-	  	  	  	  	  updatedAt: new Date()
-	  	  	  	  },
+	  	  	'Songs',
+	  	  	[
+	  	  		  {
+	  	  		  	title: 'What I Got',
+                  artist: 'Sublime',
+                  songPic: 'https://i.scdn.co/image/ab67616d0000b2738fc4b0dcfb9509553f195c85',
+                  link: 'https://soundcloud.com/sublimeofficial/what-i-got-2',
+	  	  		  	userId: 1,
+	  	  		  	createdAt: new Date(),
+	  	  		  	updatedAt: new Date()
+	  	  		  },
                 {
                     title: 'Day For Day',
                     artist: 'Kodak Black',
@@ -112,12 +112,21 @@ module.exports = {
                     userId: 3,
                     createdAt: new Date(),
                     updatedAt: new Date()
-                }                
+                },
+                {
+                    title: 'Paranoid (2012 - Remaster)',
+                    artist: 'Black Sabbath',
+                    songPic: 'https://upload.wikimedia.org/wikipedia/en/6/64/Black_Sabbath_-_Paranoid.jpg',
+                    link: 'https://soundcloud.com/blacksabbath/paranoid',
+                    userId: 1,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                }
             ], {}
         );
     },
     
     down: (queryInterface, Sequelize) => {
         return queryInterface.bulkDelete('Songs', null, {});
-    },
+    }
 };

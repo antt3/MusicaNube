@@ -1,12 +1,7 @@
-.all_songs {
-    display: block;
-    
-}
-
-.song {
+.single_song {
     display: grid;
-    grid-template-columns: 150px 750px 50px 50px;
-    grid-template-rows: 75px 75px;
+    grid-template-columns: 300px 500px 100px 100px;
+    grid-template-rows: 150x 150px;
     border-bottom: 1px solid grey;
     border-top: 1px solid grey;
     max-width: 1000px;

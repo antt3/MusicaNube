@@ -4,6 +4,7 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { Song } = require('../../db/models');
+const { User } = require('../../db/models');
 
 const router = express.Router();
 
@@ -11,7 +12,9 @@ const router = express.Router();
 router.get(
 	'/',
 	asyncHandler(async (req, res) => {
-		const songs = await Song.findAll();
+		const songs = await Song.findAll({
+			include: User
+		});
 		return res.json(songs);
 	})
 );
@@ -42,7 +45,7 @@ router.put(
 	'/:id(\\d+)',
 	validateSong,
 	asyncHandler(async (req, res) => {
-	    const { title, artist, songPic, link, sessionUser } = req.body;
+	    const { title, artist, songPic, link } = req.body;
 	    const songId = parseInt(req.params.id);
 	    const song = await Song.findByPk(songId);
 	    await song.update({ title, artist, songPic, link });

@@ -1,5 +1,4 @@
 'use strict';
-const { Validator } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
@@ -7,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 30]
+        len: [1, 100]
       }
     },
     userId: {

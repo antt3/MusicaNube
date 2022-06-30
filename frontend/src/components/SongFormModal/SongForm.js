@@ -39,7 +39,7 @@ function SongForm({sessionUser, setShowModal}) {
 
                 setShowModal(false);
 
-                return history.push('/');
+                return history.push(`/songs/${returnedSong.id}`);
             }
             
         }
