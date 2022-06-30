@@ -13,6 +13,12 @@ const AllSongs = ({ sessionUser, songs }) => {
     const history = useHistory();
     const { setCurrentSong } = useSong();
 
+    const onClick = (e, song) => {
+        e.stopPropagation();
+
+        history.push(`/songs/${song.id}`)
+    };
+
     useEffect(() => {
         dispatch(fetchSongs())
     }, [dispatch])
@@ -34,7 +40,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                     :
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
-                        <p className='title_artist' onClick={()=> history.push(`/songs/${song.id}`)}>{song.title} - - - By: {song.artist}</p>
+                        <p className='title_artist' onClick={(e)=> onClick(e, song)}>{song.title} - - - By: {song.artist}</p>
                         {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
                     </div>
                 ))}
