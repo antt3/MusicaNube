@@ -40,7 +40,7 @@ function EditSong({sessionUser, setShowModal, song}) {
 
                 setShowModal(false);
 
-                return history.push('/');
+                return history.push(`/songs/${returnedSong.id}`);
             }
             
         }
