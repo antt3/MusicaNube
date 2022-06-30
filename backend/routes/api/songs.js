@@ -45,7 +45,7 @@ router.put(
 	'/:id(\\d+)',
 	validateSong,
 	asyncHandler(async (req, res) => {
-	    const { title, artist, songPic, link, sessionUser } = req.body;
+	    const { title, artist, songPic, link } = req.body;
 	    const songId = parseInt(req.params.id);
 	    const song = await Song.findByPk(songId);
 	    await song.update({ title, artist, songPic, link });

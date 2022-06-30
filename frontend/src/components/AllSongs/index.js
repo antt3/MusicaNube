@@ -21,6 +21,8 @@ const AllSongs = ({ sessionUser, songs }) => {
 
     if (!sessionUser) return <Redirect to="/splash" />
 
+    console.log('---songsArr---', Object.values(songs));
+
     return (Object.values(songs).length > 0) ? (
         <>
             <ReactPlayer
@@ -32,7 +34,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                         <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                             <img src={song.songPic} alt={song.title} className='songImg'></img>
                             <p className='title_artist' onClick={()=> history.push(`/songs/${song.id}`)}>{song.title} - - - By: {song.artist}</p>
-                            <p className='song_username'>{song.User.username}</p>
+                            {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
                             <EditSongModal sessionUser={sessionUser} song={song} />
                             <DeleteSongModal sessionUser={sessionUser} song={song} />
                         </div>
@@ -40,7 +42,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
                         <p className='title_artist' onClick={()=> history.push(`/songs/${song.id}`)}>{song.title} - - - By: {song.artist}</p>
-                        <p className='song_username'>{song.User.username}</p>
+                        {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
                     </div>
                 ))}
             </div>

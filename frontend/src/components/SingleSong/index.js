@@ -43,7 +43,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                 <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                     <img src={song.songPic} alt={song.title} className='songImg'></img>
                     <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                    <p className='song_username'>{song.User.username}</p>
+                    {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
                     <EditSongModal sessionUser={sessionUser} song={song} />
                     <DeleteSongModal sessionUser={sessionUser} song={song} />
                 </div>
@@ -76,7 +76,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
                         <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                        <p className='song_username'>{song.User.username}</p>
+                        {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
                     </div>
                     <CommentFormModal sessionUser={sessionUser} song={song} />
                     <h1>{songComments.length} comments</h1>
