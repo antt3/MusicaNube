@@ -32,10 +32,9 @@ function App() {
                     <Route exact path='/'>
                         <HomePage sessionUser={sessionUser} songs={songs} />
                     </Route>
-                    <Route exact path='/songs'>
+                    <Route exact path='/songs/:id'>
                         <AllSongs sessionUser={sessionUser} songs={songs} />
                     </Route>
-                    
                     <Route exact path='/splash'>
                         <SplashPage sessionUser={sessionUser} />
                     </Route>
