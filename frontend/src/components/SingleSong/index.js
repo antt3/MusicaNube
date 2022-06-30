@@ -27,8 +27,15 @@ const SingleSong = ({sessionUser, songs, comments }) => {
     if (!sessionUser) return <Redirect to="/splash" />;
     const song = Object.values(songs).find(song => song.id === +id);
 
+    if (song === undefined || sessionUser.id === undefined) {
+        return (
+            <></>
+        );
+    };
+
     const songComments = Object.values(comments).filter(comment => comment.songId === song.id);
     console.log('----s here----', songs);
+    console.log('----ss here----', song);
 
     if (song.userId === sessionUser.id) {
         console.log('=====sC here-----', songComments);
