@@ -8,6 +8,8 @@ import './HomePage.css';
 
 const HomePage = ({ sessionUser, songs }) => {
 
+    console.log(songs);
+
     if (!sessionUser) return <Redirect to="/splash" />;
 
     return (

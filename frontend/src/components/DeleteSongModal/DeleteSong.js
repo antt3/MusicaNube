@@ -18,8 +18,8 @@ function DeleteSong({sessionUser, setShowModal, song}) {
         setShowModal(false);
 
         return history.push('/');
-        }  
-    }
+        };
+    };
   
     if (!sessionUser) return <Redirect to="/splash" />;
   
