@@ -1,15 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import './Navigation.css';
-
-import { NavLink } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DemoUserLogin from './DemoUserLogin';
 import SongFormModal from '../SongFormModal';
 
+import './Navigation.css';
+
 function Navigation({ isLoaded, sessionUser }){
+    const history = useHistory();
+
+    const onClick = (e) => {
+        e.stopPropagation();
+
+        return history.push('/')
+    }
   
     let sessionLinks;
     if (sessionUser) {
@@ -30,8 +37,8 @@ function Navigation({ isLoaded, sessionUser }){
     }
   
     return (
-        <div>
-            <NavLink exact to="/">Home</NavLink>
+        <div className='nav'>
+            <p onClick={onClick} className='homeNav'>Home</p>
             {isLoaded && sessionLinks}
         </div>
     );

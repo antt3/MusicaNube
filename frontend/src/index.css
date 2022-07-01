@@ -3,10 +3,8 @@
     min-height: 100vh;
 }
 
-p {
-
-}
-
 button {
-    
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: orange;
 }
