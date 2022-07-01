@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
+
 import EditSongModal from '../EditSongModal';
 import DeleteSongModal from '../DeleteSongModal';
 import { useSong } from '../../context/songContext';
@@ -19,6 +20,12 @@ const AllSongs = ({ sessionUser, songs }) => {
         history.push(`/songs/${song.id}`)
     };
 
+    const onClick2 = (e, song) => {
+        e.stopPropagation();
+
+        history.push(`/profiles/${song.userId}`)
+    };
+
     useEffect(() => {
         dispatch(fetchSongs())
     }, [dispatch])
@@ -33,7 +40,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                         <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                             <img src={song.songPic} alt={song.title} className='songImg'></img>
                             <p className='title_artist' onClick={(e)=> onClick(e, song)}>{song.title} - - - By: {song.artist}</p>
-                            {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
+                            {!!song.User ? <p className='song_username' onClick={(e)=> onClick2(e, song)}>{song.User.username}</p> : <p></p>}
                             <EditSongModal sessionUser={sessionUser} song={song} />
                             <DeleteSongModal sessionUser={sessionUser} song={song} />
                         </div>
@@ -41,7 +48,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
                         <p className='title_artist' onClick={(e)=> onClick(e, song)}>{song.title} - - - By: {song.artist}</p>
-                        {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
+                        {!!song.User ? <p className='song_username' onClick={(e)=> onClick2(e, song)}>{song.User.username}</p> : <p></p>}
                     </div>
                 ))}
             </div>
