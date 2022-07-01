@@ -1,19 +1,22 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Redirect } from 'react-router-dom';
+
+import * as profilesReducer from '../../store/profilesReducer'
 
 import './ProfilePage.css';
 
 const ProfilePage = ({sessionUser, songs, comments}) => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const fetchedUser = useSelector(state => state.profile)
 
     const filteredSongs = Object.values(songs).filter(song => song.userId === +id);
     const filteredComments = Object.values(comments).filter(comment => comment.userId === +id);
 
     useEffect(() => {
-        dispatch(fetchUser())
-    }, [dispatch])
+        dispatch(profilesReducer.fetchProfile(id))
+    }, [dispatch, id])
 
     if (!sessionUser) return <Redirect to="/splash" />;
 
@@ -25,7 +28,7 @@ const ProfilePage = ({sessionUser, songs, comments}) => {
 
 
     return (
-
+        <></>
     );
 };
 
