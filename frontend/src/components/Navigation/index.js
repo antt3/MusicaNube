@@ -15,8 +15,8 @@ function Navigation({ isLoaded, sessionUser }){
     if (sessionUser) {
         sessionLinks = (
             <>
-                <ProfileButton user={sessionUser} />
                 <SongFormModal sessionUser={sessionUser} />
+                <ProfileButton user={sessionUser} />
             </>
         );
     } else {

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import ReactPlayer from "react-player";
 import { Redirect, useHistory } from 'react-router-dom';
 
 import EditSongModal from '../EditSongModal';
@@ -13,7 +12,19 @@ import './AllSongs.css';
 const AllSongs = ({ sessionUser, songs }) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { currentSong, setCurrentSong } = useSong();
+    const { setCurrentSong } = useSong();
+
+    const onClick = (e, song) => {
+        e.stopPropagation();
+
+        history.push(`/songs/${song.id}`)
+    };
+
+    const onClick2 = (e, song) => {
+        e.stopPropagation();
+
+        history.push(`/profiles/${song.userId}`)
+    };
 
     useEffect(() => {
         dispatch(fetchSongs())
@@ -21,28 +32,23 @@ const AllSongs = ({ sessionUser, songs }) => {
 
     if (!sessionUser) return <Redirect to="/splash" />
 
-    console.log('---songsArr---', Object.values(songs));
-
     return (Object.values(songs).length > 0) ? (
         <>
-            <ReactPlayer
-                url={currentSong}
-            />
             <div className='all_songs'>
                 {Object.values(songs).map(song => (
                     song.userId === sessionUser.id ?
                         <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                             <img src={song.songPic} alt={song.title} className='songImg'></img>
-                            <p className='title_artist' onClick={()=> history.push(`/songs/${song.id}`)}>{song.title} - - - By: {song.artist}</p>
-                            {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
+                            <p className='title_artist' onClick={(e)=> onClick(e, song)}>{song.title} - - - By: {song.artist}</p>
+                            {!!song.User ? <p className='song_username' onClick={(e)=> onClick2(e, song)}>{song.User.username}</p> : <p></p>}
                             <EditSongModal sessionUser={sessionUser} song={song} />
                             <DeleteSongModal sessionUser={sessionUser} song={song} />
                         </div>
                     :
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
-                        <p className='title_artist' onClick={()=> history.push(`/songs/${song.id}`)}>{song.title} - - - By: {song.artist}</p>
-                        {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
+                        <p className='title_artist' onClick={(e)=> onClick(e, song)}>{song.title} - - - By: {song.artist}</p>
+                        {!!song.User ? <p className='song_username' onClick={(e)=> onClick2(e, song)}>{song.User.username}</p> : <p></p>}
                     </div>
                 ))}
             </div>

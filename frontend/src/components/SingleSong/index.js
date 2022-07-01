@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import * as songsReducer from '../../store/songsReducer';
@@ -16,6 +16,7 @@ import './singleSong.css';
 
 const SingleSong = ({sessionUser, songs, comments }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
     const { setCurrentSong } = useSong();
 
@@ -23,6 +24,12 @@ const SingleSong = ({sessionUser, songs, comments }) => {
         dispatch(songsReducer.fetchSongs());
         dispatch(commentsReducer.fetchComments());
     }, [dispatch]);
+
+    const onClick = (e, song) => {
+        e.stopPropagation();
+
+        history.push(`/profiles/${song.userId}`)
+    };
 
     if (!sessionUser) return <Redirect to="/splash" />;
     const song = Object.values(songs).find(song => song.id === +id);
@@ -43,9 +50,9 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                 <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                     <img src={song.songPic} alt={song.title} className='songImg'></img>
                     <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                    {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
-                    <EditSongModal sessionUser={sessionUser} song={song} />
-                    <DeleteSongModal sessionUser={sessionUser} song={song} />
+                    {!!song.User ? <p className='song_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
+                    <EditSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
+                    <DeleteSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
                 </div>
                 <CommentFormModal sessionUser={sessionUser} song={song} />
                 <h1>{songComments.length} comments</h1>
@@ -76,7 +83,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
                         <img src={song.songPic} alt={song.title} className='songImg'></img>
                         <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                        {!!song.User ? <p className='song_username'>{song.User.username}</p> : <p></p>}
+                        {!!song.User ? <p className='song_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
                     </div>
                     <CommentFormModal sessionUser={sessionUser} song={song} />
                     <h1>{songComments.length} comments</h1>

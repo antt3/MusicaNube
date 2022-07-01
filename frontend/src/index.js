@@ -4,6 +4,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import Player from "./Player";
 import { ModalProvider } from "./context/Modal";
 import SongProvider from "./context/songContext";
 
@@ -28,6 +29,7 @@ function Root() {
                 <ModalProvider>
                     <BrowserRouter>
                         <App />
+                        <Player />
                     </BrowserRouter>
                 </ModalProvider>
             </SongProvider>
