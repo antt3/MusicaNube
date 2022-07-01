@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import * as songsReducer from "./store/songsReducer";
 import * as commentsReducer from "./store/commentsReducer";
+import * as profilesReducer from "./store/profilesReducer";
 
 import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
@@ -19,6 +20,7 @@ function App() {
     const sessionUser = useSelector(state => state.session.user);
     const songs = useSelector(state => state.songsState);
     const comments = useSelector(state => state.commentsState);
+    const profiles = useSelector(state => state.profilesState);
 
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -27,6 +29,7 @@ function App() {
     useEffect(() => {
         dispatch(songsReducer.fetchSongs());
         dispatch(commentsReducer.fetchComments());
+        dispatch(profilesReducer.fetchProfiles())
     }, [dispatch]);
   
     return (
@@ -44,7 +47,7 @@ function App() {
                         <SingleSong sessionUser={sessionUser} songs={songs} comments={comments} />
                     </Route>
                     <Route exact path='/profiles/:id'>
-                        <ProfilePage sessionUser={sessionUser} songs={songs} comments={comments} />
+                        <ProfilePage sessionUser={sessionUser} songs={songs} profiles={profiles} />
                     </Route>
                     <Route exact path='/splash'>
                         <SplashPage sessionUser={sessionUser} />

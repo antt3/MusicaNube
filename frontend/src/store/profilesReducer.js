@@ -1,34 +1,29 @@
 import { csrfFetch } from "./csrf";
 
-const SET_PROFILE = 'profile/setUser';
+const SET_PROFILES = 'profiles/setUsers';
 
-const setProfile = (user) => {
+const setProfiles = (users) => {
     return {
-        type: SET_PROFILE,
-        payload: user,
+        type: SET_PROFILES,
+        users,
     };
 };
 
-export const fetchProfile = (id) => async (dispatch) => {
-    const response = await csrfFetch('/api/session/profile', {
-        method: 'POST',
-        body: JSON.stringify({
-            id
-        }),
-    });
-    const user = await response.json();
-    dispatch(setProfile(user));
-    return user;
+export const fetchProfiles = () => async (dispatch) => {
+    const response = await csrfFetch('/api/users/profile', {});
+    const users = await response.json();
+    dispatch(setProfiles(users));
+    return users;
 };
 
-const initialState = { user: null };
+const initialState = {};
 
 const profilesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_PROFILE:
+        case SET_PROFILES:
             let newState;
-            newState = Object.assign({}, state);
-            newState.user = action.payload;
+            newState = {...state};
+            action.users.forEach((user) => newState[user.id] = user);
             return newState;
         default:
             return state;

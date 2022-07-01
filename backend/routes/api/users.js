@@ -8,11 +8,11 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
-router.post(
+router.get(
 	'/profile',
 	asyncHandler(async (req, res) => {
-		const user = await User.findbyPk(req.params.id);
-		return res.json(user);
+		const users = await User.findAll();
+		return res.json(users);
 	})
 );
 
