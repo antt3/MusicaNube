@@ -10,7 +10,7 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password'),
         location: 'Sacramento, USA',
         bio: 'I love music. Music is cool!',
-        profilePic: 'https://resi.ze-robot.com/dl/sy/synthwave-sunset-1280%C3%971024.jpg'
+        profilePic: 'https://i.pinimg.com/originals/99/ba/c1/99bac1dab2b7567ca3012b3c3ce89cdc.jpg'
       },
       {
         email: 'user1@user.io',
@@ -18,7 +18,7 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password2'),
         location: 'New York City, USA',
         bio: 'I\'m the king of New York!',
-        profilePic: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F99%2Fba%2Fc1%2F99bac1dab2b7567ca3012b3c3ce89cdc.jpg&f=1&nofb=1'
+        profilePic: 'https://ih1.redbubble.net/image.846719347.2717/pp,504x498-pad,600x600,f8f8f8.jpg'
       },
       {
         email: 'user2@user.io',
