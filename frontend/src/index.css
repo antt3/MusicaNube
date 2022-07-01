@@ -6,5 +6,20 @@
 button {
     border: 1px solid black;
     border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    transition: .2s;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+button:active {
     background-color: orange;
+    transition: .01s;
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

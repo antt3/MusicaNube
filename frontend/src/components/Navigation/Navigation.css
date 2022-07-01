@@ -30,3 +30,14 @@
     color: white;
     transition: .2s;
 }
+
+.homeNav:active,
+.addPost:active,
+.profileNav:active,
+.logoutNav:active,
+.loginNav:active,
+.signupNav:active,
+.demoLoginNav:active {
+    color: orange;
+    transition: .01s;
+}
