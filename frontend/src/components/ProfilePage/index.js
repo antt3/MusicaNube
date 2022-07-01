@@ -31,8 +31,6 @@ const ProfilePage = ({sessionUser, songs, profiles}) => {
                 }
                 <h1>{user.username}</h1>
                 <h3>{user.location}</h3>
-            </div>
-            <div className='bio'>
                 <p>{user.bio}</p>
             </div>
             <div>

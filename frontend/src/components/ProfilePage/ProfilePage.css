@@ -1,0 +1,29 @@
+.top {
+    display: grid;
+    grid-template-columns: 300px 50px 300px 350px;
+    grid-template-rows: 25px 125px 125px 25px;
+    max-width: 600px;
+}
+
+.top > img {
+    height: 300px;
+    width: 300px;
+    border-radius: 150px;
+    grid-column: 1;
+    grid-row: 1 / 5;
+}
+
+.top > h1 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.top > h3 {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.top > p {
+    grid-column: 4;
+    grid-row: 2 / 4;
+}
