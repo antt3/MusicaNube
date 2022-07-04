@@ -25,10 +25,12 @@ function DeleteSong({sessionUser, setShowModal, song}) {
   
     return (
         <div className='modal'>
-            <h3>
-                Are you sure you want to delete this song?
-            </h3>
-            <button onClick={(e)=> handleClick(e)}>Confirm</button>
+            <div className='confirm_del'>
+                <h3>
+                    Are you sure you want to delete your song?
+                </h3>
+                <button onClick={(e)=> handleClick(e)}>Confirm</button>
+            </div>
         </div>
     )
 }

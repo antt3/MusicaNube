@@ -7,6 +7,13 @@
     border: 2px solid black;
 }
 
+.confirm_del {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -45,9 +52,13 @@ p {
 }
 
 h1,
-h2,
-h3 {
+h2 {
     font-weight: bold;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
+
+h3 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
 

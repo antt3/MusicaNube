@@ -26,10 +26,12 @@ const DeleteComment = ({sessionUser, setShowModal, songComment}) => {
   
     return (
         <div className='modal'>
-            <p>
-                Are you sure you want to delete your comment?
-            </p>
-            <button onClick={(e)=> handleClick(e)}>Confirm</button>
+            <div className='confirm_del' >
+                <h3>
+                    Are you sure you want to delete your comment?
+                </h3>
+                <button onClick={(e)=> handleClick(e)}>Confirm</button>
+            </div>
         </div>
     )
 };
