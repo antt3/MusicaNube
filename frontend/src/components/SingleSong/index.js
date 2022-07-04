@@ -31,6 +31,12 @@ const SingleSong = ({sessionUser, songs, comments }) => {
         history.push(`/profiles/${song.userId}`)
     };
 
+    const onClick2 = (e, comment) => {
+        e.stopPropagation();
+
+        history.push(`/profiles/${comment.userId}`)
+    };
+
     if (!sessionUser) return <Redirect to="/splash" />;
     const song = Object.values(songs).find(song => song.id === +id);
 
@@ -60,15 +66,17 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
                             return (
-                                <div key={songComment.id}>
-                                    <p>{songComment.content}</p>
+                                <div className='single_comment' key={songComment.id}>
+                                    <p className='comment_content'>{songComment.content}</p>
+                                    {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                     <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
                                 </div>
                             );
                         } else { 
                             return (
-                                <div key={songComment.id}>
-                                    <p>{songComment.content}</p>
+                                <div className='single_comment' key={songComment.id}>
+                                    <p className='comment_content'>{songComment.content}</p>
+                                    {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                 </div>
                             )}
                     }) : <p>There are no comments yet...</p>}
@@ -91,15 +99,17 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
                             return (
-                                <div key={songComment.id}>
-                                    <p>{songComment.content}</p>
+                                <div className='single_comment' key={songComment.id}>
+                                    <p className='comment_content'>{songComment.content}</p>
+                                    {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                     <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
                                 </div>
                             );
                         } else {
                             return (
-                            <div key={songComment.id}>
-                                <p>{songComment.content}</p>
+                            <div className='single_comment' key={songComment.id}>
+                                <p className='comment_content'>{songComment.content}</p>
+                                {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                             </div>
                         )}
                     }) : <p>There are no comments yet...</p>}

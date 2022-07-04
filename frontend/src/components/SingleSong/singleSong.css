@@ -39,7 +39,26 @@
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.single_username:hover {
+.comment_username {
+    font-weight: bold;
+    font-size: 20px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 30px;
+}
+
+.comment_content {
+    font-weight: bold;
+    font-size: 25px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 30px;
+}
+
+.single_comment {
+    border-bottom: 1px solid grey;
+}
+
+.single_username:hover,
+.comment_username:hover {
     text-shadow: 1px 1px 2px grey;
     transition: .2s;
     cursor: pointer;
