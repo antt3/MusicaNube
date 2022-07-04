@@ -20,10 +20,13 @@ function SongForm({sessionUser, setShowModal}) {
   
     const handleSubmit = async(e) => {
         e.preventDefault();
+        console.log('here1')
+        let valErrors = [];
         if (title !== "" &&
             artist !== "" &&
             songPic !== "" &&
-            link !== "" ) {
+            link !== "" &&
+            link.startsWith('https://soundcloud.com/')) {
             setErrors([]);
             const newSong = {
                 title,
@@ -32,7 +35,10 @@ function SongForm({sessionUser, setShowModal}) {
                 link,
                 sessionUser
             };
-            const returnedSong = await dispatch(songsReducer.writeSong(newSong))
+
+            console.log('here2')
+
+            const returnedSong = await dispatch(songsReducer.writeSong(newSong));
             
             if (returnedSong) {
                 reset();
@@ -40,10 +46,18 @@ function SongForm({sessionUser, setShowModal}) {
                 setShowModal(false);
 
                 return history.push(`/songs/${returnedSong.id}`);
-            }
+            };
             
-        }
-        return setErrors(['Must fill in all fields']);
+        };
+
+        if (link.startsWith('https://soundcloud.com/') === false) valErrors.push('Must be a Soundcloud link');
+
+        if (title === "" ||
+        artist === "" ||
+        songPic === "" ||
+        link === "") valErrors.push('Must fill in all fields');
+
+        return setErrors(valErrors);
     };
 
     const reset = () => {
@@ -52,14 +66,13 @@ function SongForm({sessionUser, setShowModal}) {
         setSongPic('');
         setLink('');
     };
-  
+
     return (
         <div className='modal'>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <h3>Post your song</h3>
                 <label>
                     Title:
                     <input
@@ -97,6 +110,13 @@ function SongForm({sessionUser, setShowModal}) {
                     />
                 </label>
                 <button type="submit">Post</button>
+                <h2>How to add your Soundcloud link</h2>
+                <ol>
+                    <li>Open the Soundcloud web app <a className='sc_link' href='https://soundcloud.com/discover' target="_blank" rel='noreferrer' >HERE</a></li>
+                    <li>Click on the search bar and search up the song you want to add.</li>
+                    <li>Click on the song's title to bring you to it's song page</li>
+                    <li>Copy the url address and paste it into the link input above</li>
+                </ol>
             </form>
         </div>
     );

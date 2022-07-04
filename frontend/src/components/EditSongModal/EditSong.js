@@ -20,10 +20,13 @@ function EditSong({sessionUser, setShowModal, song}) {
   
     const handleSubmit = async(e) => {
         e.preventDefault();
+        console.log('here1')
+        const valErrors = [];
         if (title !== "" &&
             artist !== "" &&
             songPic !== "" &&
-            link !== "" ) {
+            link !== "" &&
+            link.startsWith('https://soundcloud.com/')) {
             setErrors([]);
             const editedSong = {
                 title,
@@ -33,25 +36,38 @@ function EditSong({sessionUser, setShowModal, song}) {
                 sessionUser,
                 song
             };
-            const returnedSong = await dispatch(songsReducer.updateSong(editedSong))
+
+            const returnedSong = await dispatch(songsReducer.updateSong(editedSong));
             
             if (returnedSong) {
                 reset();
 
+                console.log('here2')
+
                 setShowModal(false);
 
                 return history.push(`/songs/${returnedSong.id}`);
-            }
+            };
             
-        }
-        return setErrors(['Cannot have empty fields']);
+        };
+
+        if (link.startsWith('https://soundcloud.com/') === false) valErrors.push('Must be a Soundcloud link');
+
+        if (title === "" ||
+        artist === "" ||
+        songPic === "" ||
+        link === "") valErrors.push('Must fill in all fields');
+
+        console.log('link: ', link.startsWith('https://soundcloud.com/'))
+
+        return setErrors(valErrors);
     };
 
     const reset = () => {
-        setTitle('');
-        setArtist('');
-        setSongPic('');
-        setLink('');
+        setTitle(song.title);
+        setArtist(song.artist);
+        setSongPic(song.songPic);
+        setLink(song.link);
     };
   
     return (
@@ -60,7 +76,6 @@ function EditSong({sessionUser, setShowModal, song}) {
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <h3>Edit your song</h3>
                 <label>
                     Title:
                     <input
@@ -98,6 +113,13 @@ function EditSong({sessionUser, setShowModal, song}) {
                     />
                 </label>
                 <button type="submit">Submit</button>
+                <h2>How to add your Soundcloud link</h2>
+                <ol>
+                    <li>Open the Soundcloud web app <a className='sc_link' href='https://soundcloud.com/discover' target="_blank" rel='noreferrer' >HERE</a></li>
+                    <li>Click on the search bar and search up the song you want to add.</li>
+                    <li>Click on the song's title to bring you to it's song page</li>
+                    <li>Copy the url address and paste it into the link input above</li>
+                </ol>
             </form>
         </div>
     )
