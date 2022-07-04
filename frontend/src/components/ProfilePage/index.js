@@ -24,14 +24,16 @@ const ProfilePage = ({sessionUser, songs, profiles}) => {
 
     return (
         <>
-            <div className='top'>
-                {user.profilePic === '' ?
-                <img src={profilePic} alt={user.username}></img> :
-                <img src={user.profilePic} alt={user.username}></img>
-                }
-                <h1>{user.username}</h1>
-                <h3>{user.location}</h3>
-                <p>{user.bio}</p>
+            <div className='profile_div'>
+                <div className='top'>
+                    {user.profilePic === '' ?
+                    <img src={profilePic} alt={user.username}></img> :
+                    <img src={user.profilePic} alt={user.username}></img>
+                    }
+                    <h1>{user.username}</h1>
+                    <h3>{user.location}</h3>
+                    <p>{user.bio}</p>
+                </div>
             </div>
             <div>
                 <AllSongs sessionUser={sessionUser} songs={filteredSongs} />

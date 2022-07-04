@@ -17,6 +17,8 @@
     margin-top: 12px;
     max-height: 125px;
     max-width: 125px;
+    min-height: 125px;
+    min-width: 125px;
     grid-column: 1;
     grid-row: 1 / 3;
 }
