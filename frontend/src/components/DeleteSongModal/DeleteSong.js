@@ -24,12 +24,12 @@ function DeleteSong({sessionUser, setShowModal, song}) {
     if (!sessionUser) return <Redirect to="/splash" />;
   
     return (
-        <>
+        <div className='modal'>
             <h3>
                 Are you sure you want to delete this song?
             </h3>
             <button onClick={(e)=> handleClick(e)}>Confirm</button>
-        </>
+        </div>
     )
 }
 

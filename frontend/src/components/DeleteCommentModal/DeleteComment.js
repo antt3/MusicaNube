@@ -25,12 +25,12 @@ const DeleteComment = ({sessionUser, setShowModal, songComment}) => {
     if (!sessionUser) return <Redirect to="/splash" />;
   
     return (
-        <>
+        <div className='modal'>
             <p>
                 Are you sure you want to delete your comment?
             </p>
             <button onClick={(e)=> handleClick(e)}>Confirm</button>
-        </>
+        </div>
     )
 };
 

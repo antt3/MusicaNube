@@ -3,7 +3,7 @@
     margin-bottom: 30px;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .homeNav,
@@ -29,6 +29,7 @@
 .demoLoginNav:hover {
     color: white;
     transition: .2s;
+    cursor: pointer;
 }
 
 .homeNav:active,

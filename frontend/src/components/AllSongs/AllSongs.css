@@ -36,7 +36,7 @@
 .title_artist:hover {
     text-shadow: 1px 1px 2px grey;
     transition: .2s;
-
+    cursor: pointer;
 }
 
 .song_username {
@@ -51,6 +51,7 @@
 .song_username:hover {
     text-shadow: 1px 1px 2px grey;
     transition: .2s;
+    cursor: pointer;
 }
 .edit {
     grid-column: 3;

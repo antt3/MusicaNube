@@ -54,49 +54,51 @@ function SongForm({sessionUser, setShowModal}) {
     };
   
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-            <h3>Post your song</h3>
-            <label>
-                Title:
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Artist:
-                <input
-                    type="text"
-                    value={artist}
-                    onChange={(e) => setArtist(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Song Picture:
-                <input
-                    type="text"
-                    value={songPic}
-                    onChange={(e) => setSongPic(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Link:
-                <input
-                    type="text"
-                    value={link}
-                    onChange={(e) => setLink(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Post</button>
-        </form>
+        <div className='modal'>
+            <form onSubmit={handleSubmit}>
+                <ul>
+                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                </ul>
+                <h3>Post your song</h3>
+                <label>
+                    Title:
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Artist:
+                    <input
+                        type="text"
+                        value={artist}
+                        onChange={(e) => setArtist(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Song Picture:
+                    <input
+                        type="text"
+                        value={songPic}
+                        onChange={(e) => setSongPic(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Link:
+                    <input
+                        type="text"
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
+                        required
+                    />
+                </label>
+                <button type="submit">Post</button>
+            </form>
+        </div>
     );
 }
 

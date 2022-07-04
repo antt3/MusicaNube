@@ -42,6 +42,7 @@
 .single_username:hover {
     text-shadow: 1px 1px 2px grey;
     transition: .2s;
+    cursor: pointer;
 }
 
 .song_article {
