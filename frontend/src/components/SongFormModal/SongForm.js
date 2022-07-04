@@ -23,7 +23,8 @@ function SongForm({sessionUser, setShowModal}) {
         if (title !== "" &&
             artist !== "" &&
             songPic !== "" &&
-            link !== "" ) {
+            link !== "" &&
+            link.startsWith('https://soundcloud.com/')) {
             setErrors([]);
             const newSong = {
                 title,

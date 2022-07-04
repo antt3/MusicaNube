@@ -23,7 +23,8 @@ function EditSong({sessionUser, setShowModal, song}) {
         if (title !== "" &&
             artist !== "" &&
             songPic !== "" &&
-            link !== "" ) {
+            link !== "" &&
+            link.startsWith('https://soundcloud.com/')) {
             setErrors([]);
             const editedSong = {
                 title,
