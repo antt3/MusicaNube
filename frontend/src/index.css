@@ -2,3 +2,63 @@
 .app {
     min-height: 100vh;
 }
+
+.modal {
+    border: 2px solid black;
+}
+
+.confirm_del {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+
+input {
+    margin: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+button {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transition: .2s;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+}
+button:active {
+    background-color: orange;
+    transition: .01s;
+}
+
+p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1,
+h2 {
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+h3 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+

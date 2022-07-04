@@ -6,7 +6,8 @@ const DemoUserLogin = () => {
   const dispatch = useDispatch();
 
   const demoLogin = (e) => {
-    e.preventDefault();
+    e.stopPropagation();
+
     return dispatch(
         sessionActions.login({ credential: 'Demo-lition', password: 'password' })
     )
@@ -14,7 +15,7 @@ const DemoUserLogin = () => {
 
   return (
     <>
-      <button onClick={demoLogin}>Demo Login</button>
+      <p className='demoLoginNav' onClick={demoLogin}>Demo Login</p>
     </>
     );
 };

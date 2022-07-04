@@ -7,7 +7,7 @@ function CommentFormModal({sessionUser, song}) {
   
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Make a Comment</button>
+            <button className='create_comment' onClick={() => setShowModal(true)}>Create a comment</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <CommentForm sessionUser={sessionUser} setShowModal={setShowModal} song={song} />

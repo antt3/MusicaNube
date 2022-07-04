@@ -7,7 +7,7 @@ function DeleteCommentModal({sessionUser, songComment}) {
   
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Delete</button>
+            <button className='del_comment' onClick={() => setShowModal(true)}>Delete</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <DeleteComment sessionUser={sessionUser} setShowModal={setShowModal} songComment={songComment} />

@@ -7,7 +7,7 @@ function SongFormModal({sessionUser}) {
   
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Add A Song</button>
+            <p className='addPost' onClick={() => setShowModal(true)}>Add A Song</p>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <SongForm sessionUser={sessionUser} setShowModal={setShowModal}/>

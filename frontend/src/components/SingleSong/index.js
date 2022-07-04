@@ -31,6 +31,12 @@ const SingleSong = ({sessionUser, songs, comments }) => {
         history.push(`/profiles/${song.userId}`)
     };
 
+    const onClick2 = (e, comment) => {
+        e.stopPropagation();
+
+        history.push(`/profiles/${comment.userId}`)
+    };
+
     if (!sessionUser) return <Redirect to="/splash" />;
     const song = Object.values(songs).find(song => song.id === +id);
 
@@ -46,11 +52,11 @@ const SingleSong = ({sessionUser, songs, comments }) => {
 
         return (
           <> 
-            <article>
-                <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
-                    <img src={song.songPic} alt={song.title} className='songImg'></img>
-                    <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                    {!!song.User ? <p className='song_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
+            <article className='song_article'>
+                <div key={song.id} className="single_song" onClick={()=> setCurrentSong(song.link)}>
+                    <img src={song.songPic} alt={song.title} className='single_img'></img>
+                    <p className='single_title' >{song.title} - - - By: {song.artist}</p>
+                    {!!song.User ? <p className='single_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
                     <EditSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
                     <DeleteSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
                 </div>
@@ -60,15 +66,17 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
                             return (
-                                <div key={songComment.id}>
-                                    <p>{songComment.content}</p>
+                                <div className='single_comment' key={songComment.id}>
+                                    <p className='comment_content'>{songComment.content}</p>
+                                    {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                     <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
                                 </div>
                             );
                         } else { 
                             return (
-                                <div key={songComment.id}>
-                                    <p>{songComment.content}</p>
+                                <div className='single_comment' key={songComment.id}>
+                                    <p className='comment_content'>{songComment.content}</p>
+                                    {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                 </div>
                             )}
                     }) : <p>There are no comments yet...</p>}
@@ -79,11 +87,11 @@ const SingleSong = ({sessionUser, songs, comments }) => {
     } else {
         return (
             <>
-                <article>
-                    <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
-                        <img src={song.songPic} alt={song.title} className='songImg'></img>
-                        <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                        {!!song.User ? <p className='song_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
+                <article className='song_article'>
+                    <div key={song.id} className="single_song" onClick={()=> setCurrentSong(song.link)}>
+                        <img src={song.songPic} alt={song.title} className='single_img'></img>
+                        <p className='single_title' >{song.title} - - - By: {song.artist}</p>
+                        {!!song.User ? <p className='single_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
                     </div>
                     <CommentFormModal sessionUser={sessionUser} song={song} />
                     <h1>{songComments.length} comments</h1>
@@ -91,15 +99,17 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
                             return (
-                                <div key={songComment.id}>
-                                    <p>{songComment.content}</p>
+                                <div className='single_comment' key={songComment.id}>
+                                    <p className='comment_content'>{songComment.content}</p>
+                                    {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                     <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
                                 </div>
                             );
                         } else {
                             return (
-                            <div key={songComment.id}>
-                                <p>{songComment.content}</p>
+                            <div className='single_comment' key={songComment.id}>
+                                <p className='comment_content'>{songComment.content}</p>
+                                {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                             </div>
                         )}
                     }) : <p>There are no comments yet...</p>}
