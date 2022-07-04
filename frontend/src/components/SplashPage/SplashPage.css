@@ -1,0 +1,25 @@
+.splash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.splash_h1 {
+    font-size: 45px;
+}
+
+.splash_p {
+    font-size: 25px
+}
+
+.splash_link {
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.splash_link:hover {
+    text-shadow: 1px 1px 2px grey;
+    transition: .2s;
+}

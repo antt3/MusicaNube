@@ -53,6 +53,7 @@
     transition: .2s;
     cursor: pointer;
 }
+
 .edit {
     grid-column: 3;
     grid-row: 2;
