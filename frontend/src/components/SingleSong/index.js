@@ -46,11 +46,11 @@ const SingleSong = ({sessionUser, songs, comments }) => {
 
         return (
           <> 
-            <article>
-                <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
-                    <img src={song.songPic} alt={song.title} className='songImg'></img>
-                    <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                    {!!song.User ? <p className='song_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
+            <article className='song_article'>
+                <div key={song.id} className="single_song" onClick={()=> setCurrentSong(song.link)}>
+                    <img src={song.songPic} alt={song.title} className='single_img'></img>
+                    <p className='single_title' >{song.title} - - - By: {song.artist}</p>
+                    {!!song.User ? <p className='single_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
                     <EditSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
                     <DeleteSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
                 </div>
@@ -79,11 +79,11 @@ const SingleSong = ({sessionUser, songs, comments }) => {
     } else {
         return (
             <>
-                <article>
-                    <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
-                        <img src={song.songPic} alt={song.title} className='songImg'></img>
-                        <p className='title_artist' >{song.title} - - - By: {song.artist}</p>
-                        {!!song.User ? <p className='song_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
+                <article className='song_article'>
+                    <div key={song.id} className="single_song" onClick={()=> setCurrentSong(song.link)}>
+                        <img src={song.songPic} alt={song.title} className='single_img'></img>
+                        <p className='single_title' >{song.title} - - - By: {song.artist}</p>
+                        {!!song.User ? <p className='single_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
                     </div>
                     <CommentFormModal sessionUser={sessionUser} song={song} />
                     <h1>{songComments.length} comments</h1>

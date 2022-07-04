@@ -33,8 +33,8 @@ const AllSongs = ({ sessionUser, songs }) => {
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (Object.values(songs).length > 0) ? (
-        <>
-            <div className='all_songs'>
+        <div className='all_songs'>
+            <div>
                 {Object.values(songs).map(song => (
                     song.userId === sessionUser.id ?
                         <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
@@ -52,7 +52,7 @@ const AllSongs = ({ sessionUser, songs }) => {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     ) :  (
         <div>
         </div>

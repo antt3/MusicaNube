@@ -3,6 +3,7 @@
     grid-template-columns: 300px 50px 300px 350px;
     grid-template-rows: 25px 125px 125px 25px;
     max-width: 600px;
+    margin-bottom: 40px;
 }
 
 .top > img {
@@ -14,16 +15,19 @@
 }
 
 .top > h1 {
+    font-size: 45px;
     grid-column: 3;
     grid-row: 2;
 }
 
 .top > h3 {
+    font-size: 25px;
     grid-column: 3;
     grid-row: 3;
 }
 
 .top > p {
+    font-size: 20px;
     grid-column: 4;
     grid-row: 2 / 4;
 }
