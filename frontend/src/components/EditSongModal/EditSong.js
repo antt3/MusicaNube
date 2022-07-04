@@ -20,6 +20,8 @@ function EditSong({sessionUser, setShowModal, song}) {
   
     const handleSubmit = async(e) => {
         e.preventDefault();
+        console.log('here1')
+        const valErrors = [];
         if (title !== "" &&
             artist !== "" &&
             songPic !== "" &&
@@ -34,25 +36,38 @@ function EditSong({sessionUser, setShowModal, song}) {
                 sessionUser,
                 song
             };
-            const returnedSong = await dispatch(songsReducer.updateSong(editedSong))
+
+            const returnedSong = await dispatch(songsReducer.updateSong(editedSong));
             
             if (returnedSong) {
                 reset();
 
+                console.log('here2')
+
                 setShowModal(false);
 
                 return history.push(`/songs/${returnedSong.id}`);
-            }
+            };
             
-        }
-        return setErrors(['Cannot have empty fields']);
+        };
+
+        if (link.startsWith('https://soundcloud.com/') === false) valErrors.push('Must be a Soundcloud link');
+
+        if (title === "" ||
+        artist === "" ||
+        songPic === "" ||
+        link === "") valErrors.push('Must fill in all fields');
+
+        console.log('link: ', link.startsWith('https://soundcloud.com/'))
+
+        return setErrors(valErrors);
     };
 
     const reset = () => {
-        setTitle('');
-        setArtist('');
-        setSongPic('');
-        setLink('');
+        setTitle(song.title);
+        setArtist(song.artist);
+        setSongPic(song.songPic);
+        setLink(song.link);
     };
   
     return (
@@ -61,7 +76,6 @@ function EditSong({sessionUser, setShowModal, song}) {
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <h3>Edit your song</h3>
                 <label>
                     Title:
                     <input

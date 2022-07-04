@@ -20,6 +20,8 @@ function SongForm({sessionUser, setShowModal}) {
   
     const handleSubmit = async(e) => {
         e.preventDefault();
+        console.log('here1')
+        let valErrors = [];
         if (title !== "" &&
             artist !== "" &&
             songPic !== "" &&
@@ -33,7 +35,10 @@ function SongForm({sessionUser, setShowModal}) {
                 link,
                 sessionUser
             };
-            const returnedSong = await dispatch(songsReducer.writeSong(newSong))
+
+            console.log('here2')
+
+            const returnedSong = await dispatch(songsReducer.writeSong(newSong));
             
             if (returnedSong) {
                 reset();
@@ -41,10 +46,18 @@ function SongForm({sessionUser, setShowModal}) {
                 setShowModal(false);
 
                 return history.push(`/songs/${returnedSong.id}`);
-            }
+            };
             
-        }
-        return setErrors(['Must fill in all fields']);
+        };
+
+        if (link.startsWith('https://soundcloud.com/') === false) valErrors.push('Must be a Soundcloud link');
+
+        if (title === "" ||
+        artist === "" ||
+        songPic === "" ||
+        link === "") valErrors.push('Must fill in all fields');
+
+        return setErrors(valErrors);
     };
 
     const reset = () => {
@@ -53,14 +66,13 @@ function SongForm({sessionUser, setShowModal}) {
         setSongPic('');
         setLink('');
     };
-  
+
     return (
         <div className='modal'>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <h3>Post your song</h3>
                 <label>
                     Title:
                     <input
