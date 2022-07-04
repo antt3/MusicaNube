@@ -115,7 +115,7 @@ function EditSong({sessionUser, setShowModal, song}) {
                 <button type="submit">Submit</button>
                 <h2>How to add your Soundcloud link</h2>
                 <ol>
-                    <li>Open the Soundcloud web app <a href='https://soundcloud.com/discover' target="_blank" rel='noreferrer' >here</a></li>
+                    <li>Open the Soundcloud web app <a className='sc_link' href='https://soundcloud.com/discover' target="_blank" rel='noreferrer' >HERE</a></li>
                     <li>Click on the search bar and search up the song you want to add.</li>
                     <li>Click on the song's title to bring you to it's song page</li>
                     <li>Copy the url address and paste it into the link input above</li>

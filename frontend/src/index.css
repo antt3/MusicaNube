@@ -75,3 +75,14 @@ ol {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.sc_link {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.sc_link:hover {
+    text-shadow: 1px 1px 2px grey;
+    transition: .2s;
+}
