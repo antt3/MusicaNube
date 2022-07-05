@@ -53,7 +53,7 @@ function App() {
                         <SplashPage sessionUser={sessionUser} />
                     </Route>
                     <Route>
-                        <h1>Page Not Found</h1>
+                        <h1 className="pnf">Page Not Found</h1>
                     </Route>
                 </Switch>
             )}
