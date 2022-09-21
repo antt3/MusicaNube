@@ -19,10 +19,10 @@ export const addComment = (comment) => {
   };
 };
 
-export const editComment = (song) => {
+export const editComment = (comment) => {
   return {
       type: EDIT_COMMENT,
-      song
+      comment
   };
 };
 
@@ -58,7 +58,8 @@ export const writeComment = (payload) => async dispatch => {
 };
 
 export const updateComment = (payload) => async dispatch => {
-  const response = await csrfFetch(`/api/comments/${payload.comment.id}`, {
+  console.log('--------------Payload Id: ', payload.id, '----------------');
+  const response = await csrfFetch(`/api/comments/${payload.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
