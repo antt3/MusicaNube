@@ -83,8 +83,7 @@ function SignupFormPage({ sessionUser }) {
                 </label>
                 <label>
                     Biography
-                    <input
-                        type="text"
+                    <textarea
                         value={bio}
                         onChange={(e) => setBio(e.target.value)}
                     />

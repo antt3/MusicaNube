@@ -114,7 +114,7 @@ function SongForm({sessionUser, setShowModal}) {
                 <ol>
                     <li>Open the Soundcloud web app <a className='sc_link' href='https://soundcloud.com/discover' target="_blank" rel='noreferrer' >HERE</a></li>
                     <li>Click on the search bar and search up the song you want to add.</li>
-                    <li>Click on the song's title to bring you to it's song page</li>
+                    <li>Click on the song's title to bring you to its song page</li>
                     <li>Copy the url address and paste it into the link input above</li>
                 </ol>
             </form>

@@ -4,9 +4,9 @@ import { Redirect, useHistory } from "react-router-dom";
 
 import * as commentsReducer from "../../store/commentsReducer";
 
-import './CommentForm.css';
+import './EditComment.css';
 
-const CommentForm = ({sessionUser, setShowModal, song}) => {
+const CommentForm = ({sessionUser, setShowModal, song, comment}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const [content, setContent] = useState('');
@@ -30,7 +30,7 @@ const CommentForm = ({sessionUser, setShowModal, song}) => {
                 songId
             };
 
-            const returnedComment = await dispatch(commentsReducer.writeComment(comment));
+            const returnedComment = await dispatch(commentsReducer.updateComment(comment));
 
             if (returnedComment) {
                 reset();
@@ -51,7 +51,7 @@ const CommentForm = ({sessionUser, setShowModal, song}) => {
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label>
-                    Create a comment
+                    Edit your comment
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}

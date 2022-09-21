@@ -94,11 +94,11 @@ const songReducer = (state = initialState, action) => {
             action.songs.forEach((song) => newState[song.id] = song);
             return newState
         case ADD_SONG:
-            newState = {...state}
+            newState = {...state};
             newState = { ...state, [action.song.id]: action.song };
-            return newState
+            return newState;
         case EDIT_SONG:
-            newState = {...state}
+            newState = {...state};
             return { ...state, [ action.song.id ]: action.song };
         case DELETE_SONG:
             newState = { ...state };
