@@ -35,6 +35,19 @@ router.post(
 	})
 );
 
+router.put(
+	'/:id(\\d+)',
+	validateComment,
+	asyncHandler(async (req, res) => {
+	    const { content } = req.body;
+	    const commentId = parseInt(req.params.id);
+	    const comment = await Comment.findByPk(commentId);
+	    await comment.update({ content });
+	    const newComment = await Comment.findByPk(commentId);
+	    return res.json(newComment);
+	})
+);
+
 router.delete(
 	'/:id(\\d+)',
 	asyncHandler(async (req, res) => {
