@@ -1,36 +1,26 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Songs', {
+    return queryInterface.createTable('PlaylistsAndSongs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING(75),
-        allowNull: false
-      },
-      artist: {
-        type: Sequelize.STRING(75),
-        allowNull: false
-      },
-      songPic: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      link: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-      },
-      userId: {
+      playlistId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         onDelete: 'CASCADE',
         hooks: true,
-        references: { model: 'Users' }
+        references: { model: 'Playlists' }
+      },
+      songId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        hooks: true,
+        references: { model: 'Songs' }
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Songs');
+    return queryInterface.dropTable('PlaylistsAndSongs');
   }
 };
