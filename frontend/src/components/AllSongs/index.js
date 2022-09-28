@@ -8,6 +8,7 @@ import EditPlaylistModal from '../EditPlaylistModal';
 import DeletePlaylistModal from '../DeletePlaylistModal';
 import { useSong } from '../../context/songContext';
 import { fetchSongs } from '../../store/songsReducer';
+import { fetchPlaylists } from '../../store/playlistsReducer';
 
 import './AllSongs.css';
 
@@ -35,7 +36,8 @@ const AllSongs = ({ sessionUser, songs, playlists }) => {
     };
 
     useEffect(() => {
-        dispatch(fetchSongs())
+        dispatch(fetchSongs());
+        dispatch(fetchPlaylists());
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/splash" />

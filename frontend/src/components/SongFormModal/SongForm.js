@@ -20,7 +20,6 @@ function SongForm({sessionUser, setShowModal}) {
   
     const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log('here1')
         let valErrors = [];
         if (title !== "" &&
             artist !== "" &&
@@ -35,8 +34,6 @@ function SongForm({sessionUser, setShowModal}) {
                 link,
                 sessionUser
             };
-
-            console.log('here2')
 
             const returnedSong = await dispatch(songsReducer.writeSong(newSong));
             
