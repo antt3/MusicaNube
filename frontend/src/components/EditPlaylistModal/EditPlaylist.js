@@ -25,7 +25,8 @@ function EditPlaylist({sessionUser, setShowModal, playlist}) {
         e.preventDefault();
         let valErrors = [];
         if (name !== "" &&
-            (pic.length === 0 || validateImg(pic))) {
+            pic !== "" &&
+            validateImg(pic)) {
             setErrors([]);
             const newPlaylist = {
                 name,
@@ -44,7 +45,7 @@ function EditPlaylist({sessionUser, setShowModal, playlist}) {
             
         };
 
-        if (pic.length > 0 && !validateImg(pic)) valErrors.push('Link must be to a jpg, jpeg, or png.');
+        if (!validateImg(pic)) valErrors.push('Link must be to a jpg, jpeg, or png.');
 
         if (name === "") valErrors.push('The playlist must have a name.');
 
@@ -81,6 +82,7 @@ function EditPlaylist({sessionUser, setShowModal, playlist}) {
                     />
                 </label>
                 <button type="submit">Post</button>
+                <p>Both Fields Are Required</p>
             </form>
         </div>
     );

@@ -11,10 +11,10 @@ import * as playlistSongsReducer from "./store/playlistSongsReducer";
 
 import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
-import HomePage from "./components/HomePage.js";
 import AllSongs from "./components/AllSongs";
 import SingleSong from "./components/SingleSong";
 import ProfilePage from "./components/ProfilePage";
+import SinglePlaylist from "./components/SinglePlaylist";
 
 function App() {
     const dispatch = useDispatch();
@@ -44,13 +44,19 @@ function App() {
             {isLoaded && (
                 <Switch>
                     <Route exact path='/'>
-                        <HomePage sessionUser={sessionUser} songs={songs} />
+                        <AllSongs sessionUser={sessionUser} songs={songs} playlists={playlists} />
                     </Route>
                     <Route exact path='/songs'>
-                        <AllSongs sessionUser={sessionUser} songs={songs} playlists={playlists} />
+                        <AllSongs sessionUser={sessionUser} songs={songs} />
+                    </Route>
+                    <Route exact path='/playlists'>
+                        <AllSongs sessionUser={sessionUser} playlists={playlists} />
                     </Route>
                     <Route exact path='/songs/:id'>
                         <SingleSong sessionUser={sessionUser} songs={songs} comments={comments} />
+                    </Route>
+                    <Route exact path='/playlists/:id'>
+                        <SinglePlaylist sessionUser={sessionUser} songs={songs} playlists={playlists} playlistSongs={playlistSongs} />
                     </Route>
                     <Route exact path='/profiles/:id'>
                         <ProfilePage sessionUser={sessionUser} songs={songs} profiles={profiles} playlists={playlists} />

@@ -12,10 +12,11 @@ import { fetchPlaylists } from '../../store/playlistsReducer';
 
 import './AllSongs.css';
 
-const AllSongs = ({ sessionUser, songs, playlists }) => {
+const AllSongs = ({ sessionUser, playlists, songs }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { setCurrentSong } = useSong();
+    const demoPlaylistPic = "https://i0.wp.com/www.gloryofthesnow.com/wp-content/uploads/2022/05/Music-Orange.png?fit=700%2C700&ssl=1";
 
     const songClick = (e, song) => {
         e.stopPropagation();
@@ -23,33 +24,35 @@ const AllSongs = ({ sessionUser, songs, playlists }) => {
         history.push(`/songs/${song.id}`)
     };
 
-    const profileClick = (e, song) => {
+    const profileClick = (e, songOrPlaylist) => {
         e.stopPropagation();
 
-        history.push(`/profiles/${song.userId}`)
+        history.push(`/profiles/${songOrPlaylist.userId}`)
     };
 
-    const playlistClick = (e, song) => {
+    const playlistClick = (e, playlist) => {
         e.stopPropagation();
 
-        history.push(`/profiles/${song.userId}`)
+        history.push(`/playlist/${playlist.id}`)
     };
 
     useEffect(() => {
-        dispatch(fetchSongs());
         dispatch(fetchPlaylists());
+        dispatch(fetchSongs());
     }, [dispatch])
 
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (
         <>
-            { Object.values(playlists).length > 0 ? (
+            {console.log('-------------Playlists: : ', playlists, '--------------------')}
+            {console.log('-------------Songs: ', songs, '--------------------')}
+            { playlists ? (
                 <div className='all_playlists'>
                     { Object.values(playlists).map(playlist => (
                         playlist.userId === sessionUser.id ? (
                             <div key={playlist.id} className='playlist'>
-                                <img src={playlist.pic} alt={playlist.name} className='playlistImg'></img>
+                                <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg'></img>
                                 <p className='name_artist' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
                                 <p className='playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
                                 <EditPlaylistModal sessionUser={sessionUser} playlist={playlist} />
@@ -57,7 +60,7 @@ const AllSongs = ({ sessionUser, songs, playlists }) => {
                             </div>
                         ) : (
                             <div key={playlist.id} className='playlist'>
-                                <img src={playlist.pic} alt={playlist.name} className='playlistImg'></img>
+                                <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg'></img>
                                 <p className='name_artist' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
                                 <p className='playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
                             </div>
@@ -66,7 +69,7 @@ const AllSongs = ({ sessionUser, songs, playlists }) => {
                 </div>
             ) : <div></div> }
 
-            { Object.values(songs).length > 0 ? (
+            { songs ? (
                 <div className='all_songs'>
                     { Object.values(songs).map(song => (
                         song.userId === sessionUser.id ? (

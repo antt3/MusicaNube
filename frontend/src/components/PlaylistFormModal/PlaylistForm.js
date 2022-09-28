@@ -25,7 +25,8 @@ function PlaylistForm({sessionUser, setShowModal}) {
         e.preventDefault();
         let valErrors = [];
         if (name !== "" &&
-            (pic.length === 0 || validateImg(pic))) {
+            pic !== "" &&
+            validateImg(pic)) {
             setErrors([]);
             const newPlaylist = {
                 name,
@@ -45,7 +46,7 @@ function PlaylistForm({sessionUser, setShowModal}) {
             
         };
 
-        if (pic.length > 0 && !validateImg(pic)) valErrors.push('Link must be to a jpg, jpeg, or png.');
+        if (!validateImg(pic)) valErrors.push('Link must be to a jpg, jpeg, or png.');
 
         if (name === "") valErrors.push('The playlist must have a name.');
 
