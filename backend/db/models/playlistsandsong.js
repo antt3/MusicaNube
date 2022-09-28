@@ -3,13 +3,9 @@ const { Validator } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const PlaylistsAndSong = sequelize.define('PlaylistsAndSong', {
-    playlistId: {
-      type: DataTypes.INTEGER
-    },
-    songId: {
-      type: DataTypes.INTEGER
-    }
-  });
+    playlistId: DataTypes.INTEGER,
+    songId: DataTypes.INTEGER
+  }, {});
 
   PlaylistsAndSong.associate = function(models) {
     // associations can be defined here
