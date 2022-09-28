@@ -6,10 +6,12 @@ import songsState from './songsReducer';
 import commentsState from './commentsReducer';
 import profilesState from './profilesReducer';
 import playlistsState from './playlistsReducer';
+import playlistSongsState from './playlistSongsReducer';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     playlistsState,
+    playlistSongsState,
     songsState,
     commentsState,
     profilesState

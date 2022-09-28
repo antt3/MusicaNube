@@ -59,18 +59,18 @@ export const writePlaylist = (payload) => async dispatch => {
     }
 };
 
-// export const updatePlaylist = (payload) => async dispatch => {
-//     const response = await csrfFetch(`/api/playlists/${payload.playlist.id}`, {
-//         method: 'PUT',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(payload)
-//     })
-//     if (response.ok) {
-//         const playlist = await response.json();
-//         dispatch(editPlaylist(playlist));
-//         return playlist;
-//     }
-// };
+export const updatePlaylist = (payload) => async dispatch => {
+    const response = await csrfFetch(`/api/playlists/${payload.playlist.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+    if (response.ok) {
+        const playlist = await response.json();
+        dispatch(editPlaylist(playlist));
+        return playlist;
+    }
+};
 
 export const removePlaylist = (playlist) => async dispatch => {
     const response = await csrfFetch (`/api/playlists/${playlist.id}`, {
@@ -85,7 +85,7 @@ export const removePlaylist = (playlist) => async dispatch => {
 
 const initialState = {};
 
-const playlistReducer = (state = initialState, action) => {
+const playlistsReducer = (state = initialState, action) => {
     let newState;
   
     switch (action.type) {
@@ -109,4 +109,4 @@ const playlistReducer = (state = initialState, action) => {
     }
 };
       
-export default playlistReducer;
+export default playlistsReducer;

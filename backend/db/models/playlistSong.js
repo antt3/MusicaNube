@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
 
   PlaylistSong.associate = function(models) {
     // associations can be defined here
+    PlaylistSong.belongsTo(models.Song, { foreignKey: 'songId' });
+    PlaylistSong.belongsTo(models.Playlist, { foreignKey: 'playlistId' });
   };
 
   return PlaylistSong;
