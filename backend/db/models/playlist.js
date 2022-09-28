@@ -10,6 +10,12 @@ module.exports = (sequelize, DataTypes) => {
         len: [1, 35]
       }
     },
+    pic: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 256]
+      }
+    },
     userId: {
       type: DataTypes.INTEGER,
       validate: {

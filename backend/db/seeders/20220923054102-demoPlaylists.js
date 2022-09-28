@@ -8,60 +8,70 @@ module.exports = {
         {
           name: 'Playlist 1',
           userId: 1,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Playlist 2',
           userId: 1,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Playlist 3',
           userId: 1,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Playlist 4',
           userId: 1,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Playlist Uno',
           userId: 2,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Playlist Dos',
           userId: 2,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Playlist Tres',
           userId: 2,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'My Favorites',
           userId: 3,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Vibes',
           userId: 3,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: 'Everything',
           userId: 3,
+          pic: "",
           createdAt: new Date(),
           updatedAt: new Date()
         }

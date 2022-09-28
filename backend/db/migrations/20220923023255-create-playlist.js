@@ -12,6 +12,9 @@ module.exports = {
         type: Sequelize.STRING(35),
         allowNull: false
       },
+      pic: {
+        type: Sequelize.STRING(256)
+      },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,

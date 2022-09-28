@@ -34,13 +34,13 @@ export const deletePlaylist = (playlist) => {
 };
 
 export const fetchPlaylists = () => async (dispatch) => {
-	  const response = await csrfFetch('/api/playlists');
-  
-	  if (response.ok) {
-	  	  const playlists = await response.json();
-    
-	  	  dispatch(loadPlaylists(playlists));
-	  	  return playlists;
+	const response = await csrfFetch('/api/playlists');
+
+	if (response.ok) {
+		const playlists = await response.json();
+
+		dispatch(loadPlaylists(playlists));
+		return playlists;
     };
 };
 
@@ -51,7 +51,7 @@ export const writePlaylist = (payload) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     });
-  
+
     if (response.ok) {
         const playlist = await response.json();
         dispatch(addPlaylist(playlist));
@@ -59,18 +59,18 @@ export const writePlaylist = (payload) => async dispatch => {
     }
 };
 
-export const updatePlaylist = (payload) => async dispatch => {
-    const response = await csrfFetch(`/api/playlists/${payload.playlist.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-    if (response.ok) {
-        const playlist = await response.json();
-        dispatch(editPlaylist(playlist));
-        return playlist;
-    }
-};
+// export const updatePlaylist = (payload) => async dispatch => {
+//     const response = await csrfFetch(`/api/playlists/${payload.playlist.id}`, {
+//         method: 'PUT',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(payload)
+//     })
+//     if (response.ok) {
+//         const playlist = await response.json();
+//         dispatch(editPlaylist(playlist));
+//         return playlist;
+//     }
+// };
 
 export const removePlaylist = (playlist) => async dispatch => {
     const response = await csrfFetch (`/api/playlists/${playlist.id}`, {

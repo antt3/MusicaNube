@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import * as songsReducer from "./store/songsReducer";
 import * as commentsReducer from "./store/commentsReducer";
 import * as profilesReducer from "./store/profilesReducer";
+import * as playlistsReducer from "./store/playlistsReducer";
 
 import SplashPage from "./components/SplashPage";
 import Navigation from "./components/Navigation";
@@ -29,7 +30,8 @@ function App() {
     useEffect(() => {
         dispatch(songsReducer.fetchSongs());
         dispatch(commentsReducer.fetchComments());
-        dispatch(profilesReducer.fetchProfiles())
+        dispatch(profilesReducer.fetchProfiles());
+        dispatch(playlistsReducer.fetchPlaylists());
     }, [dispatch]);
   
     return (

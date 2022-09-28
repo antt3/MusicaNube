@@ -5,9 +5,11 @@ import sessionReducer from './session';
 import songsState from './songsReducer';
 import commentsState from './commentsReducer';
 import profilesState from './profilesReducer';
+import playlistsState from './playlistsReducer';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
+    playlistsState,
     songsState,
     commentsState,
     profilesState

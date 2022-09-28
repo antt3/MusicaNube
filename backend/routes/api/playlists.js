@@ -10,8 +10,8 @@ router.get('/', asyncHandler(async(req, res) => {
 }))
 
 router.post('/', asyncHandler(async(req, res) => {
-  const playlists = await Playlist.create(req.body);
-  return res.json(playlists)
+  const playlist = await Playlist.create(req.body);
+  return res.json(playlist)
 }))
 
 router.delete('/:id', asyncHandler(async(req, res) => {
