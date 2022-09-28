@@ -47,13 +47,13 @@ function App() {
                         <HomePage sessionUser={sessionUser} songs={songs} />
                     </Route>
                     <Route exact path='/songs'>
-                        <AllSongs sessionUser={sessionUser} songs={songs} />
+                        <AllSongs sessionUser={sessionUser} songs={songs} playlists={playlists} />
                     </Route>
                     <Route exact path='/songs/:id'>
                         <SingleSong sessionUser={sessionUser} songs={songs} comments={comments} />
                     </Route>
                     <Route exact path='/profiles/:id'>
-                        <ProfilePage sessionUser={sessionUser} songs={songs} profiles={profiles} />
+                        <ProfilePage sessionUser={sessionUser} songs={songs} profiles={profiles} playlists={playlists} />
                     </Route>
                     <Route exact path='/splash'>
                         <SplashPage sessionUser={sessionUser} />

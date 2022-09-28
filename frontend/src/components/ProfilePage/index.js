@@ -5,7 +5,7 @@ import AllSongs from '../AllSongs';
 
 import './ProfilePage.css';
 
-const ProfilePage = ({sessionUser, songs, profiles}) => {
+const ProfilePage = ({sessionUser, songs, profiles, playlists}) => {
     const { id } = useParams();
     const profilePic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
@@ -14,6 +14,7 @@ const ProfilePage = ({sessionUser, songs, profiles}) => {
     const user = Object.values(profiles).find(profile => profile.id === +id);
 
     const filteredSongs = Object.values(songs).filter(song => song.userId === +id);
+    const filteredPlaylists = Object.values(playlists).filter(playlist => playlist.userId === +id);
     // const filteredComments = Object.values(comments).filter(comment => comment.userId === +id);
 
     if (user === undefined) {
@@ -36,7 +37,7 @@ const ProfilePage = ({sessionUser, songs, profiles}) => {
                 </div>
             </div>
             <div>
-                <AllSongs sessionUser={sessionUser} songs={filteredSongs} />
+                <AllSongs sessionUser={sessionUser} songs={filteredSongs} playlists={filteredPlaylists} />
             </div>
         </>
     );
