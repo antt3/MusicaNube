@@ -33,7 +33,7 @@ const AllSongs = ({ sessionUser, playlists, songs }) => {
     const playlistClick = (e, playlist) => {
         e.stopPropagation();
 
-        history.push(`/playlist/${playlist.id}`)
+        history.push(`/playlists/${playlist.id}`)
     };
 
     useEffect(() => {
@@ -44,31 +44,32 @@ const AllSongs = ({ sessionUser, playlists, songs }) => {
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (
-        <>
-            {console.log('-------------Playlists: : ', playlists, '--------------------')}
-            {console.log('-------------Songs: ', songs, '--------------------')}
+        <div className='all_div'>
+            <h1>Playlists</h1>
             { playlists ? (
                 <div className='all_playlists'>
                     { Object.values(playlists).map(playlist => (
                         playlist.userId === sessionUser.id ? (
                             <div key={playlist.id} className='playlist'>
-                                <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg'></img>
-                                <p className='name_artist' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
+                                <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg' onClick={(e)=> playlistClick(e, playlist)}></img>
+                                <p className='playlist_name' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
                                 <p className='playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
-                                <EditPlaylistModal sessionUser={sessionUser} playlist={playlist} />
-                                <DeletePlaylistModal sessionUser={sessionUser} playlist={playlist} />
+                                <div id='playlist_buttons'>
+                                    <EditPlaylistModal sessionUser={sessionUser} playlist={playlist} />
+                                    <DeletePlaylistModal sessionUser={sessionUser} playlist={playlist} />
+                                </div>
                             </div>
                         ) : (
                             <div key={playlist.id} className='playlist'>
-                                <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg'></img>
-                                <p className='name_artist' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
+                                <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg' onClick={(e)=> playlistClick(e, playlist)}></img>
+                                <p className='playlist_name' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
                                 <p className='playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
                             </div>
                         )
                     ))}
                 </div>
             ) : <div></div> }
-
+            <h1>Songs</h1>
             { songs ? (
                 <div className='all_songs'>
                     { Object.values(songs).map(song => (
@@ -90,7 +91,7 @@ const AllSongs = ({ sessionUser, playlists, songs }) => {
                     ))}
                 </div>
             ) :  <div></div> }
-        </>
+        </div>
     );
 };
 
