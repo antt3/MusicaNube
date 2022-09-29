@@ -59,7 +59,7 @@ export const writePlaylist = (payload) => async dispatch => {
 };
 
 export const updatePlaylist = (payload) => async dispatch => {
-    const response = await csrfFetch(`/api/playlists/${payload.playlist.id}`, {
+    const response = await csrfFetch(`/api/playlists/${payload.playlistId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

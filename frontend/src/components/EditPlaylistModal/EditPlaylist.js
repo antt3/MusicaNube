@@ -10,6 +10,7 @@ import './EditPlaylist.css';
 function EditPlaylist({sessionUser, setShowModal, playlist}) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const playlistId = playlist.id;
     const [name, setName] = useState(playlist.name);
     const [pic, setPic] = useState(playlist.pic);
     const [errors, setErrors] = useState([]);
@@ -28,7 +29,8 @@ function EditPlaylist({sessionUser, setShowModal, playlist}) {
             setErrors([]);
             const newPlaylist = {
                 name,
-                pic
+                pic,
+                playlistId
             };
 
             const returnedPlaylist = await dispatch(playlistsReducer.updatePlaylist(newPlaylist));

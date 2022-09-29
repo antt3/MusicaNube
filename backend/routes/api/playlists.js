@@ -51,7 +51,9 @@ router.put(
 	    const playlistId = parseInt(req.params.id);
 	    const playlist = await Playlist.findByPk(playlistId);
 	    await playlist.update({ name, pic });
-	    const newPlaylist = await Playlist.findByPk(playlistId);
+	    const newPlaylist = await Playlist.findByPk(playlistId, {
+			include: User
+		});
 	    return res.json(newPlaylist);
 	})
 );
