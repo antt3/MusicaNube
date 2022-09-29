@@ -44,6 +44,6 @@ function Navigation({ isLoaded, sessionUser }){
             {isLoaded && sessionLinks}
         </div>
     );
-}
+};
 
 export default Navigation;

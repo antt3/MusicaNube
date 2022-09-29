@@ -62,7 +62,7 @@ function EditPlaylist({sessionUser, setShowModal, playlist}) {
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label>
-                    Playlist Name:
+                    Playlist Name*
                     <input
                         type="text"
                         value={name}
@@ -71,16 +71,15 @@ function EditPlaylist({sessionUser, setShowModal, playlist}) {
                     />
                 </label>
                 <label>
-                    Playlist Picture:
+                    Playlist Picture
                     <input
                         type="text"
                         value={pic}
                         onChange={(e) => setPic(e.target.value)}
-                        required
                     />
                 </label>
                 <button type="submit">Post</button>
-                <p>Both Fields Are Required</p>
+                <p>Required*</p>
             </form>
         </div>
     );

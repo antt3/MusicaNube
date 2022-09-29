@@ -1,30 +1,30 @@
-import React from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
+import * as profilesReducer from '../../store/profilesReducer';
 import AllSongs from '../AllSongs';
 
 import './ProfilePage.css';
 
-const ProfilePage = ({sessionUser, songs, profiles, playlists}) => {
+const ProfilePage = ({sessionUser, songs, playlists}) => {
+    const profiles = useSelector((state) => state.profilesState)
     const { id } = useParams();
+    const dispatch = useDispatch();
     const profilePic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
 
-    if (!sessionUser) return <Redirect to="/splash" />;
-
     const user = Object.values(profiles).find(profile => profile.id === +id);
+
 
     const filteredSongs = Object.values(songs).filter(song => song.userId === +id);
     const filteredPlaylists = Object.values(playlists).filter(playlist => playlist.userId === +id);
     // const filteredComments = Object.values(comments).filter(comment => comment.userId === +id);
-
-    if (user === undefined) {
-        return (
-            <></>
-        );
-    };
+    useEffect(()=> {
+        dispatch(profilesReducer.fetchProfiles());
+    }, [dispatch])
 
     return (
-        <>
+        user && <>
             <div className='profile_div'>
                 <div className='top'>
                     {user.profilePic === '' ?
@@ -37,7 +37,7 @@ const ProfilePage = ({sessionUser, songs, profiles, playlists}) => {
                 </div>
             </div>
             <div>
-                <AllSongs sessionUser={sessionUser} songs={filteredSongs} playlists={filteredPlaylists} />
+                <AllSongs songs={filteredSongs} playlists={filteredPlaylists} />
             </div>
         </>
     );

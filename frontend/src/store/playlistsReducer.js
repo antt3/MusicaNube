@@ -38,7 +38,6 @@ export const fetchPlaylists = () => async (dispatch) => {
 
 	if (response.ok) {
 		const playlists = await response.json();
-
 		dispatch(loadPlaylists(playlists));
 		return playlists;
     };
@@ -89,9 +88,9 @@ const playlistsReducer = (state = initialState, action) => {
     let newState;
   
     switch (action.type) {
-        case LOAD_PLAYLISTS: 
+        case LOAD_PLAYLISTS:
             newState = {...state};
-            action.playlists.forEach((playlist) => newState[playlist.id] = playlist);
+            action.playlists.forEach((playlist) => newState[playlist.id] = playlist)
             return newState
         case ADD_PLAYLIST:
             newState = {...state};

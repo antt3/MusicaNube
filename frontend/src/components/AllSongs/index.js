@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 
 import EditSongModal from '../EditSongModal';
@@ -12,11 +12,13 @@ import { fetchPlaylists } from '../../store/playlistsReducer';
 
 import './AllSongs.css';
 
-const AllSongs = ({ sessionUser, playlists, songs }) => {
+const AllSongs = ({ playlists, songs }) => {
+    const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
     const history = useHistory();
     const { setCurrentSong } = useSong();
     const demoPlaylistPic = "https://i0.wp.com/www.gloryofthesnow.com/wp-content/uploads/2022/05/Music-Orange.png?fit=700%2C700&ssl=1";
+
 
     const songClick = (e, song) => {
         e.stopPropagation();
@@ -45,7 +47,7 @@ const AllSongs = ({ sessionUser, playlists, songs }) => {
 
     return (
         <div className='all_div'>
-            <h1>Playlists</h1>
+            { playlists && <h1>Playlists</h1> }
             { playlists ? (
                 <div className='all_playlists'>
                     { Object.values(playlists).map(playlist => (
@@ -69,7 +71,7 @@ const AllSongs = ({ sessionUser, playlists, songs }) => {
                     ))}
                 </div>
             ) : <div></div> }
-            <h1>Songs</h1>
+            { songs && <h1>Songs</h1> }
             { songs ? (
                 <div className='all_songs'>
                     { Object.values(songs).map(song => (

@@ -31,14 +31,16 @@ router.post(
 	'/',
 	validatePlaylist,
 	asyncHandler(async (req, res) => {
-	    const { name, pic } = req.body;
+	    const { name, pic, sessionUser } = req.body;
 	    const userId = sessionUser.id;
-	    const playlist = await Playlist.create({ name, pic, userId });
+	    const newPlaylist = await Playlist.create({ name, pic, userId });
+		const playlist = await await Playlist.findByPk(newPlaylist.id, {
+			include: User
+		});
 	    
-    
 	    return res.json(playlist);
 	})
-  );
+);
   
 // Edit Playlist
 router.put(

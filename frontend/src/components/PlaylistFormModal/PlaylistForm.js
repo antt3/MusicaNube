@@ -33,8 +33,10 @@ function PlaylistForm({sessionUser, setShowModal}) {
             };
 
             const returnedPlaylist = await dispatch(playlistsReducer.writePlaylist(newPlaylist));
+            console.log('--------------------Returned Playlist 1: ', returnedPlaylist, '------------------------');
             
             if (returnedPlaylist) {
+                console.log('--------------------Returned Playlist 2: ', returnedPlaylist, '------------------------');
                 reset();
 
                 setShowModal(false);
@@ -63,7 +65,7 @@ function PlaylistForm({sessionUser, setShowModal}) {
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label>
-                    Playlist Name:
+                    Playlist Name*
                     <input
                         type="text"
                         value={name}
@@ -72,15 +74,15 @@ function PlaylistForm({sessionUser, setShowModal}) {
                     />
                 </label>
                 <label>
-                    Playlist Picture:
+                    Playlist Picture
                     <input
                         type="text"
                         value={pic}
                         onChange={(e) => setPic(e.target.value)}
-                        required
                     />
                 </label>
                 <button type="submit">Post</button>
+                <p>Required*</p>
             </form>
         </div>
     );
