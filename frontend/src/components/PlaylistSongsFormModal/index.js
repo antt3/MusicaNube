@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import SongForm from './SongForm';
+import PlaylistSongsForm from './PlaylistSongsForm';
 
-function SongFormModal({sessionUser}) {
+function SongFormModal({sessionUser, song, playlists}) {
     const [showModal, setShowModal] = useState(false);
     const onClick = (e) => {
         e.stopPropagation();
@@ -10,11 +10,11 @@ function SongFormModal({sessionUser}) {
     }
 
     return (
-        <div onClick={(e) => onClick(e)}>
-            <p className='addPost'>Add A Song</p>
+        <div className='add_playlist'>
+            <button onClick={(e) => onClick(e)}>Add To Playlist</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <SongForm sessionUser={sessionUser} setShowModal={setShowModal}/>
+                    <PlaylistSongsForm sessionUser={sessionUser} setShowModal={setShowModal} song={song} playlists={playlists} />
                 </Modal>
             )}
         </div>

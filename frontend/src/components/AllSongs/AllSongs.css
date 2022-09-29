@@ -72,7 +72,7 @@
 
 .song {
     display: grid;
-    grid-template-columns: 150px 700px 50px 50px 50px;
+    grid-template-columns: 150px 750px 40px 60px;
     grid-template-rows: 75px 75px;
     border-bottom: 1px solid grey;
     border-top: 1px solid grey;
@@ -120,11 +120,21 @@
 
 .edit {
     grid-column: 3;
-    grid-row: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
 }
 
 .delete {
     grid-column: 4;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+}
+
+.add_playlist {
+    grid-column: 3 / 5;
     grid-row: 2;
+    
 }
 

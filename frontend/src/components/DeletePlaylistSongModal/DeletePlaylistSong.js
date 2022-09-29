@@ -12,12 +12,13 @@ function DeletePlaylistSong({sessionUser, setShowModal, playlistSong}) {
 
 
     const handleClick = async(e) => {
+        const id = playlistSong.playlistId;
         const deleted = await dispatch(playlistSongsReducer.removePlaylistSong(playlistSong));
 
         if (deleted) {
         setShowModal(false);
 
-        return history.push(`/playlists/${playlistSong.playlistId}`);
+        return history.push(`/playlists/${id}`);
         };
     };
   

@@ -33,8 +33,10 @@ router.post(
 	asyncHandler(async (req, res) => {
 	    const { title, artist, songPic, link, sessionUser } = req.body;
 	    const userId = sessionUser.id;
-	    const song = await Song.create({ title, artist, songPic, link, userId });
-	    
+	    const newSong = await Song.create({ title, artist, songPic, link, userId });
+	    const song = Song.findByPk(newSong.id, {
+			include: User
+		})
     
 	    return res.json(song);
 	})
@@ -49,7 +51,9 @@ router.put(
 	    const songId = parseInt(req.params.id);
 	    const song = await Song.findByPk(songId);
 	    await song.update({ title, artist, songPic, link });
-	    const newSong = await Song.findByPk(songId);
+	    const newSong = await Song.findByPk(songId, {
+			include: User
+		});
 	    return res.json(newSong);
 	})
 );
@@ -59,7 +63,9 @@ router.delete(
 	'/:id(\\d+)',
 	asyncHandler(async (req, res) => {
 	const songId = parseInt(req.params.id, 10)
-	const song = await Song.findByPk(songId)
+	const song = await Song.findByPk(songId, {
+		include: User
+	})
 	if (song) {
 	    await song.destroy();
 	    return res.json(songId);

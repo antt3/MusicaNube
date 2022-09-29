@@ -53,7 +53,7 @@ const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
                                 <EditPlaylistModal sessionUser={sessionUser} playlist={playlist} />
                                 <DeletePlaylistModal sessionUser={sessionUser} playlist={playlist} />
                             </div>
-                            { playlistSongs ? (
+                            { filteredPlaylistSongs.length > 0 ? (
                                 <div className='sp_songs_div'>
                                     { filteredPlaylistSongs.map(playlistSong => (
                                         <div className='sp_song_div' key={playlistSong.id}>
