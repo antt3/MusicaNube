@@ -86,3 +86,9 @@ ol {
     text-shadow: 1px 1px 2px grey;
     transition: .2s;
 }
+
+.pnf {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}

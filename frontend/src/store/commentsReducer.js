@@ -2,7 +2,8 @@ import { csrfFetch } from './csrf';
 
 const LOAD_COMMENTS = 'posts/loadComments';
 const ADD_COMMENT = 'posts/addComment';
-const DELETE_COMMENT = 'posts/deletComment'
+const EDIT_COMMENT = 'posts/editComments';
+const DELETE_COMMENT = 'posts/deletComment';
 
 export const loadComments = (comments) => {
   return {
@@ -15,6 +16,13 @@ export const addComment = (comment) => {
   return {
     type: ADD_COMMENT,
     comment
+  };
+};
+
+export const editComment = (comment) => {
+  return {
+      type: EDIT_COMMENT,
+      comment
   };
 };
 
@@ -49,6 +57,20 @@ export const writeComment = (payload) => async dispatch => {
   }
 };
 
+export const updateComment = (payload) => async dispatch => {
+  console.log('--------------Payload Id: ', payload.id, '----------------');
+  const response = await csrfFetch(`/api/comments/${payload.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+  })
+  if (response.ok) {
+      const comment = await response.json();
+      dispatch(editComment(comment));
+      return comment;
+  }
+};
+
 export const removeComment = (payload) => async dispatch => {
   const response = await csrfFetch (`/api/comments/${payload.id}`, {
     method: 'DELETE',
@@ -69,11 +91,15 @@ const commentsReducer = (state = initialState, action) => {
     case LOAD_COMMENTS: 
       newState = {...state};
       action.comments.forEach((comment) => newState[comment.id] = comment);
-      return newState
+      return newState;
     case ADD_COMMENT:
-      newState = {...state}
+      newState = {...state};
       newState = { ...state, [action.comment.id]: action.comment };
-      return newState
+      return newState;
+    case EDIT_COMMENT:
+      newState = {...state};
+      newState = { ...state, [action.comment.id]: action.comment };
+      return newState;
     case DELETE_COMMENT:
       newState = { ...state };
       delete newState[action.comment];

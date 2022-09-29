@@ -1,9 +1,9 @@
 import { csrfFetch } from "./csrf";
 
-const LOAD_SONGS = 'songs/loadSongs'
+const LOAD_SONGS = 'songs/loadSongs';
 const ADD_SONG = 'songs/addSong';
 const EDIT_SONG = 'songs/editsong';
-const DELETE_SONG = 'songs/deleteSong'
+const DELETE_SONG = 'songs/deleteSong';
 
 export const loadSongs = (songs) => {
     return {
@@ -85,7 +85,7 @@ export const removeSong = (song) => async dispatch => {
 
 const initialState = {};
 
-const songReducer = (state = initialState, action) => {
+const songsReducer = (state = initialState, action) => {
     let newState;
   
     switch (action.type) {
@@ -94,19 +94,20 @@ const songReducer = (state = initialState, action) => {
             action.songs.forEach((song) => newState[song.id] = song);
             return newState
         case ADD_SONG:
-            newState = {...state}
+            newState = {...state};
             newState = { ...state, [action.song.id]: action.song };
-            return newState
+            return newState;
         case EDIT_SONG:
-            newState = {...state}
+            newState = {...state};
             return { ...state, [ action.song.id ]: action.song };
         case DELETE_SONG:
-            newState = { ...state };
+            newState = {...state};
             delete newState[action.song];
             return newState;
+
     default:
         return state;
     }
 };
       
-export default songReducer;
+export default songsReducer;

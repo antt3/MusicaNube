@@ -10,10 +10,14 @@ const setProfiles = (users) => {
 };
 
 export const fetchProfiles = () => async (dispatch) => {
-    const response = await csrfFetch('/api/users/profile', {});
-    const users = await response.json();
-    dispatch(setProfiles(users));
-    return users;
+    const response = await csrfFetch('/api/users/profile');
+
+    if (response.ok) {
+        const users = await response.json();
+        
+        dispatch(setProfiles(users));
+        return users;
+    };
 };
 
 const initialState = {};

@@ -9,6 +9,7 @@ import EditSongModal from '../EditSongModal';
 import DeleteSongModal from '../DeleteSongModal';
 import CommentFormModal from '../CommentFormModal';
 import DeleteCommentModal from '../DeleteCommentModal';
+import EditCommentModal from '../EditCommentModal';
 
 import { useSong } from '../../context/songContext';
 
@@ -61,7 +62,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                     <DeleteSongModal sessionUser={sessionUser} song={song} onClick={(e)=> e.stopPropagation()} />
                 </div>
                 <CommentFormModal sessionUser={sessionUser} song={song} />
-                <h1>{songComments.length} comments</h1>
+                {songComments.length === 1 ? <h1>1 comment</h1> : <h1>{songComments.length} comments</h1>}
                 <div>
                     { songComments.length > 0 ? songComments.map((songComment) => {
                         if (songComment.userId === sessionUser.id) {
@@ -70,6 +71,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                                     <p className='comment_content'>{songComment.content}</p>
                                     {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                     <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
+                                    <EditCommentModal sessionUser={sessionUser} comment={songComment} song={song} />
                                 </div>
                             );
                         } else { 
@@ -103,6 +105,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
                                     <p className='comment_content'>{songComment.content}</p>
                                     {!!songComment.User ? <p className='comment_username' onClick={(e)=> onClick2(e,songComment)}>{songComment.User.username}</p> : <p></p>}
                                     <DeleteCommentModal sessionUser={sessionUser} songComment={songComment} />
+                                    <EditCommentModal sessionUser={sessionUser} comment={songComment} song={song} />
                                 </div>
                             );
                         } else {

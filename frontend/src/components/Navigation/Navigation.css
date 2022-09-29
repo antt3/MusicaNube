@@ -1,9 +1,12 @@
 .nav {
     background-color: black;
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-around;
+    z-index: 5;
+    position: sticky;
+    top: 0px;
 }
 
 .homeNav,

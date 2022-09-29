@@ -102,7 +102,7 @@ module.exports = {
                     songId: 11,
                     createdAt: new Date(),
                     updatedAt: new Date()
-                },  
+                }
             ], {}  
         );
     },

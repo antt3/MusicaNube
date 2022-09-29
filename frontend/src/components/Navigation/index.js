@@ -6,6 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import DemoUserLogin from './DemoUserLogin';
 import SongFormModal from '../SongFormModal';
+import PlaylistFormModal from '../PlaylistFormModal';
 
 import './Navigation.css';
 
@@ -23,6 +24,7 @@ function Navigation({ isLoaded, sessionUser }){
         sessionLinks = (
             <>
                 <SongFormModal sessionUser={sessionUser} />
+                <PlaylistFormModal sessionUser={sessionUser} />
                 <ProfileButton user={sessionUser} />
             </>
         );
@@ -42,6 +44,6 @@ function Navigation({ isLoaded, sessionUser }){
             {isLoaded && sessionLinks}
         </div>
     );
-}
+};
 
 export default Navigation;
