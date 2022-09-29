@@ -48,7 +48,7 @@ export const writePlaylistSong = (playlistSong) => async (dispatch) => {
 }
 
 export const removePlaylistSong = (playlistSong) => async (dispatch) => {
-    const response = await csrfFetch(`/api/playlist-songs/${playlistSong}`, {
+    const response = await csrfFetch(`/api/playlist-songs/${playlistSong.id}`, {
         method: "DELETE"
     })
     if (response.ok) {

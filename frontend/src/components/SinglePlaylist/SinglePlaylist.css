@@ -73,5 +73,19 @@
 }
 
 .sp_song_div {
-    
+    display: grid;
+    grid-template-columns: 675px 25px;
+    grid-template-rows: 50px;
+    border-bottom: 1px solid grey;
+}
+
+.sp_title_artist {
+    grid-column: 1;
+}
+
+.sp_delete {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -5,6 +5,7 @@ import { useParams, Redirect, useHistory } from 'react-router-dom';
 
 import EditPlaylistModal from '../EditPlaylistModal';
 import DeletePlaylistModal from '../DeletePlaylistModal';
+import DeletePlaylistSongModal from '../DeletePlaylistSongModal';
 import { useSong } from '../../context/songContext';
 import { fetchSongs } from '../../store/songsReducer';
 import { fetchPlaylists } from '../../store/playlistsReducer';
@@ -14,6 +15,7 @@ import './SinglePlaylist.css';
 const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
     const { id } = useParams();
     const playlist = Object.values(playlists).find((playlist) => playlist.id === +id);
+    const filteredPlaylistSongs = Object.values(playlistSongs).filter(playlistSong => playlistSong.playlistId === +id);
     const dispatch = useDispatch();
     const history = useHistory();
     const { setCurrentSong } = useSong();
@@ -51,19 +53,32 @@ const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
                                 <EditPlaylistModal sessionUser={sessionUser} playlist={playlist} />
                                 <DeletePlaylistModal sessionUser={sessionUser} playlist={playlist} />
                             </div>
-                            <div className='sp_songs_div'>
-                                { playlistSongs ? (
-                                    <div className='sp_song_div'>
-                                        
-                                    </div>
-                                ) : <div></div> }
-                            </div>
+                            { playlistSongs ? (
+                                <div className='sp_songs_div'>
+                                    { filteredPlaylistSongs.map(playlistSong => (
+                                        <div className='sp_song_div' key={playlistSong.id}>
+                                            <p className='sp_title_artist' onClick={(e)=> songClick(e, playlistSong.Song)}>{playlistSong.Song.title} - - - By: {playlistSong.Song.artist}</p>
+                                            <div className='sp_delete'><DeletePlaylistSongModal sessionUser={sessionUser} playlistSong={playlistSong.Song} /></div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : <div></div> }
                         </div>
                     ) : (
                         <div key={playlist.id} className='single_playlist'>
                             <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='single_playlistImg'></img>
                             <p className='single_playlist_name'>{playlist.name}</p>
                             <p className='single_playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
+                            { playlistSongs ? (
+                                <div className='sp_songs_div'>
+                                    { filteredPlaylistSongs.map(playlistSong => (
+                                        <div className='sp_song_div' key={playlistSong.id}>
+                                            <p className='sp_title_artist' onClick={(e)=> songClick(e, playlistSong.Song)}>{playlistSong.Song.title} - - - By: {playlistSong.Song.artist}</p>
+                                            <div className='sp_delete'></div>
+                                        </div>
+                                    ))}
+                                </div>
+                            ) : <div></div> }
                         </div>
                     )}
                 </div>
