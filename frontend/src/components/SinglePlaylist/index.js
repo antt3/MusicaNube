@@ -11,9 +11,9 @@ import { fetchPlaylists } from '../../store/playlistsReducer';
 
 import './SinglePlaylist.css';
 
-const SinglePlaylist = ({ sessionUser, songs, playlists, playlistSongs }) => {
+const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
     const { id } = useParams();
-    const playlist = Object.values(playlists).filter((playlist) => playlist.id === +id)[0];
+    const playlist = Object.values(playlists).find((playlist) => playlist.id === +id);
     const dispatch = useDispatch();
     const history = useHistory();
     const { setCurrentSong } = useSong();
@@ -25,10 +25,10 @@ const SinglePlaylist = ({ sessionUser, songs, playlists, playlistSongs }) => {
         history.push(`/profiles/${songOrPlaylist.userId}`)
     };
 
-    const playlistClick = (e, playlist) => {
+    const songClick = (e, song) => {
         e.stopPropagation();
 
-        history.push(`/playlist/${playlist.id}`)
+        history.push(`/songs/${song.id}`)
     };
 
     useEffect(() => {
@@ -39,27 +39,36 @@ const SinglePlaylist = ({ sessionUser, songs, playlists, playlistSongs }) => {
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (
-        <>
+        <div className='playlist_all_div'>
             { playlist ? (
-                <div className='all_playlists'>
+                <div className='all_playlist'>
                     { playlist.userId === sessionUser.id ? (
-                        <div key={playlist.id} className='playlist'>
-                            <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg'></img>
-                            <p className='name_artist' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
-                            <p className='playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
-                            <EditPlaylistModal sessionUser={sessionUser} playlist={playlist} />
-                            <DeletePlaylistModal sessionUser={sessionUser} playlist={playlist} />
+                        <div key={playlist.id} className='single_playlist'>
+                            <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='single_playlistImg'></img>
+                            <p className='single_playlist_name'>{playlist.name}</p>
+                            <p className='single_playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
+                            <div id='single_playlist_buttons'>
+                                <EditPlaylistModal sessionUser={sessionUser} playlist={playlist} />
+                                <DeletePlaylistModal sessionUser={sessionUser} playlist={playlist} />
+                            </div>
+                            <div className='sp_songs_div'>
+                                { playlistSongs ? (
+                                    <div className='sp_song_div'>
+                                        
+                                    </div>
+                                ) : <div></div> }
+                            </div>
                         </div>
                     ) : (
-                        <div key={playlist.id} className='playlist'>
-                            <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg'></img>
-                            <p className='name_artist' onClick={(e)=> playlistClick(e, playlist)}>{playlist.name}</p>
-                            <p className='playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
+                        <div key={playlist.id} className='single_playlist'>
+                            <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='single_playlistImg'></img>
+                            <p className='single_playlist_name'>{playlist.name}</p>
+                            <p className='single_playlist_username' onClick={(e)=> profileClick(e, playlist)}>{playlist.User.username}</p>
                         </div>
                     )}
                 </div>
             ) : <div></div> }
-        </>
+        </div>
     );
 };
 
