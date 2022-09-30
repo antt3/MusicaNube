@@ -15,6 +15,7 @@ import AllSongs from "./components/AllSongs";
 import SingleSong from "./components/SingleSong";
 import ProfilePage from "./components/ProfilePage";
 import SinglePlaylist from "./components/SinglePlaylist";
+import SearchPage from "./components/SearchPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -60,6 +61,9 @@ function App() {
                     </Route>
                     <Route exact path='/profiles/:id'>
                         <ProfilePage sessionUser={sessionUser} songs={songs} playlists={playlists} />
+                    </Route>
+                    <Route exact path='/search/:searchedTerm'>
+                        <SearchPage sessionUser={sessionUser} songs={songs} playlists={playlists} profiles={profiles} />
                     </Route>
                     <Route exact path='/splash'>
                         <SplashPage sessionUser={sessionUser} />
