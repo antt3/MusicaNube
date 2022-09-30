@@ -49,13 +49,13 @@ const CommentForm = ({sessionUser, setShowModal, song, comment}) => {
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label>
-                    Edit your comment
-                    <textarea
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        required
-                    />
+                    Edit Your Comment
                 </label>
+                <textarea
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    required
+                />
                 <button type="submit">Submit</button>
             </form>
         </div>
