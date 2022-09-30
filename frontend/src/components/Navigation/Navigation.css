@@ -45,3 +45,19 @@
     color: orange;
     transition: .01s;
 }
+
+.searchbar_div {
+    margin-top: 5px;
+}
+
+#searchbar_form {
+    display: inline;
+}
+
+#searchbar_input {
+    width: 300px;
+}
+
+#searchbar_button {
+    padding: 5px;
+}

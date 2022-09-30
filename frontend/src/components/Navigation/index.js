@@ -7,6 +7,7 @@ import SignupFormModal from '../SignupFormModal';
 import DemoUserLogin from './DemoUserLogin';
 import SongFormModal from '../SongFormModal';
 import PlaylistFormModal from '../PlaylistFormModal';
+import SearchBox from './SearchBox';
 
 import './Navigation.css';
 
@@ -25,6 +26,7 @@ function Navigation({ isLoaded, sessionUser }){
             <>
                 <SongFormModal sessionUser={sessionUser} />
                 <PlaylistFormModal sessionUser={sessionUser} />
+                <SearchBox />
                 <ProfileButton user={sessionUser} />
             </>
         );
