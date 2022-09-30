@@ -77,7 +77,7 @@ const AllSongs = ({ playlists, songs }) => {
                 <div className='all_songs'>
                     { Object.values(songs).map(song => (
                         song.userId === sessionUser.id ? (
-                            <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
+                            <div key={song.id} className="song" onClick={()=> setCurrentSong([song.link])}>
                                 <img src={song.songPic} alt={song.title} className='songImg'></img>
                                 <p className='title_artist' onClick={(e)=> songClick(e, song)}>{song.title} - - - By: {song.artist}</p>
                                 <p className='song_username' onClick={(e)=> profileClick(e, song)}>{song.User.username}</p>
@@ -86,7 +86,7 @@ const AllSongs = ({ playlists, songs }) => {
                                 <PlaylistSongsFormModal sessionUser={sessionUser} song={song} playlists={playlists} />
                             </div>
                         ) : (
-                            <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
+                            <div key={song.id} className="song" onClick={()=> setCurrentSong([song.link])}>
                                 <img src={song.songPic} alt={song.title} className='songImg'></img>
                                 <p className='title_artist' onClick={(e)=> songClick(e, song)}>{song.title} - - - By: {song.artist}</p>
                                 <p className='song_username' onClick={(e)=> profileClick(e, song)}>{song.User.username}</p>

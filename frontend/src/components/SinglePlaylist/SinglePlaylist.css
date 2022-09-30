@@ -38,11 +38,10 @@
     grid-column: 1;
     grid-row: 2;
     font-size: 20px;
+    margin-left: 5px;
 }
 
 .single_playlist_name:hover {
-    text-shadow: 1px 1px 2px grey;
-    transition: .2s;
     cursor: pointer;
 }
 
@@ -50,6 +49,7 @@
     grid-column: 1;
     grid-row: 3;
     font-size: 17px;
+    margin-left: 5px;
 }
 
 .single_playlist_username:hover {
@@ -97,4 +97,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.no_songs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
 }

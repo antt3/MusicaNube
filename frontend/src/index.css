@@ -63,7 +63,7 @@ button:active {
     transition: .01s;
 }
 
-p {
+p, div {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 

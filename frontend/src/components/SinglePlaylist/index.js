@@ -33,6 +33,20 @@ const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
         history.push(`/songs/${song.id}`)
     };
 
+    // const playPlaylist = () => {
+    //     const songLinks = [];
+
+    //     if (filteredPlaylistSongs) {
+
+    //         filteredPlaylistSongs.forEach((playlistSong) => {
+    //             songLinks.push(playlistSong.Song.link);
+    //         });
+    //         setCurrentSong([songLinks[0]]);
+
+    //     }
+
+    // };
+
     useEffect(() => {
         dispatch(fetchPlaylists());
         dispatch(fetchSongs());
@@ -56,13 +70,13 @@ const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
                             { filteredPlaylistSongs.length > 0 ? (
                                 <div className='sp_songs_div'>
                                     { filteredPlaylistSongs.map(playlistSong => (
-                                        <div className='sp_song_div' key={playlistSong.id} onClick={()=> setCurrentSong(playlistSong.Song.link)}>
+                                        <div className='sp_song_div' key={playlistSong.id} onClick={()=> setCurrentSong([playlistSong.Song.link])}>
                                             <p className='sp_title_artist' onClick={(e)=> songClick(e, playlistSong.Song)}>{playlistSong.Song.title} - - - By: {playlistSong.Song.artist}</p>
                                             <div className='sp_delete'><DeletePlaylistSongModal sessionUser={sessionUser} playlistSong={playlistSong} /></div>
                                         </div>
                                     ))}
                                 </div>
-                            ) : <div></div> }
+                            ) : <div className='no_songs'>There are no songs in this playlist</div> }
                         </div>
                     ) : (
                         <div key={playlist.id} className='single_playlist'>
@@ -72,13 +86,13 @@ const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
                             { playlistSongs ? (
                                 <div className='sp_songs_div'>
                                     { filteredPlaylistSongs.map(playlistSong => (
-                                        <div className='sp_song_div' key={playlistSong.id} onClick={()=> setCurrentSong(playlistSong.Song.link)}>
+                                        <div className='sp_song_div' key={playlistSong.id} onClick={()=> setCurrentSong([playlistSong.Song.link])}>
                                             <p className='sp_title_artist' onClick={(e)=> songClick(e, playlistSong.Song)}>{playlistSong.Song.title} - - - By: {playlistSong.Song.artist}</p>
                                             <div className='sp_delete'></div>
                                         </div>
                                     ))}
                                 </div>
-                            ) : <div></div> }
+                            ) : <div className='no_songs'>There are no songs in this playlist</div> }
                         </div>
                     )}
                 </div>

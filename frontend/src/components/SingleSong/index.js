@@ -54,7 +54,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
         return (
           <> 
             <article className='song_article'>
-                <div key={song.id} className="single_song" onClick={()=> setCurrentSong(song.link)}>
+                <div key={song.id} className="single_song" onClick={()=> setCurrentSong([song.link])}>
                     <img src={song.songPic} alt={song.title} className='single_img'></img>
                     <p className='single_title' >{song.title} - - - By: {song.artist}</p>
                     {!!song.User ? <p className='single_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
@@ -90,7 +90,7 @@ const SingleSong = ({sessionUser, songs, comments }) => {
         return (
             <>
                 <article className='song_article'>
-                    <div key={song.id} className="single_song" onClick={()=> setCurrentSong(song.link)}>
+                    <div key={song.id} className="single_song" onClick={()=> setCurrentSong([song.link])}>
                         <img src={song.songPic} alt={song.title} className='single_img'></img>
                         <p className='single_title' >{song.title} - - - By: {song.artist}</p>
                         {!!song.User ? <p className='single_username' onClick={(e)=> onClick(e, song)}>{song.User.username}</p> : <p></p>}
