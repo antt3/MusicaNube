@@ -18,6 +18,11 @@
     grid-row: 1 / 4;
 }
 
+.single_img:hover,
+.single_title:hover {
+    cursor: pointer;
+}
+
 .single_title {
     grid-column: 2;
     grid-row: 1;
