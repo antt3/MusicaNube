@@ -1,0 +1,52 @@
+.all_div_h1 {
+    font-size: 35px;
+}
+
+.all_users {
+    display: flex;
+    width: 1000px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.user {
+    display: grid;
+    grid-template-columns: 25px 150px 300px 25px;
+    grid-template-rows: 150px;
+    margin-bottom: 25px;
+}
+
+.user_img {
+    grid-column: 2;
+    grid-row: 1;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+
+.user_img:hover {
+    box-shadow: 3px 5px 8px black;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.user_username {
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.user_username:hover {
+    text-shadow: 1px 1px 2px grey;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.no_results {
+    font-size: 25px;
+    margin-bottom: 25px;
+}

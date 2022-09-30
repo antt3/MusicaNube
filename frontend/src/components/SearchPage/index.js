@@ -34,6 +34,12 @@ const SearchPage = ({ playlists, songs, profiles }) => {
         history.push(`/songs/${song.id}`)
     };
 
+    const userProfileClick = (e, user) => {
+        e.stopPropagation();
+
+        history.push(`/profiles/${user.id}`)
+    };
+
     const profileClick = (e, songOrPlaylist) => {
         e.stopPropagation();
 
@@ -57,25 +63,43 @@ const SearchPage = ({ playlists, songs, profiles }) => {
     }, [dispatch])
 
     useEffect(() => {
-        setSearchedSongs(songs.filter((song) => (
+        setSearchedSongs(Object.values(songs).filter((song) => (
             song.title.toLowerCase().includes(searchedTerm.toLowerCase()) ||
             song.artist.toLowerCase().includes(searchedTerm.toLowerCase())
         )))
 
-        setSearchedPlaylists(playlists.filter((playlist) => (
+        setSearchedPlaylists(Object.values(playlists).filter((playlist) => (
             playlist.name.toLowerCase().includes(searchedTerm.toLowerCase())
         )))
 
-        setSearchedUsers(profiles.filter((user) => (
+        setSearchedUsers(Object.values(profiles).filter((user) => (
             user.username.toLowerCase().includes(searchedTerm.toLowerCase())
         )))
-    }, [searchedTerm])
+    }, [searchedTerm, playlists, profiles, songs])
 
     if (!sessionUser) return <Redirect to="/splash" />
 
     return (
         <div className='all_div'>
-            { searchedPlaylists.length > 0 && <h1>Playlists</h1> }
+            <h1 className='all_div_h1'>Users</h1>
+            {/* {console.log('---------------------- Searched Users: ', searchedUsers, '-----------------------')} */}
+            { searchedUsers.length > 0 ? (
+                <div className='all_users'>
+                    { searchedUsers.map((user) => (
+                        <div key={user.id} className='user'>
+                            <img
+                                className='user_img'
+                                src={user.profilePic === '' ? demoProfilePic : user.profilePic}
+                                alt={user.username}
+                                onClick={(e)=> userProfileClick(e, user)}
+                            ></img>
+                            <p className='user_username' onClick={(e)=> userProfileClick(e, user)}>{user.username}</p>
+                        </div>
+                    ))}
+                </div>
+            ) : <div className='no_results'>No Results</div> }
+            <h1 className='all_div_h1'>Playlists</h1>
+            {/* {console.log('---------------------- Searched Playlists: ', searchedPlaylists, '-----------------------')} */}
             { searchedPlaylists.length > 0 ? (
                 <div className='all_playlists'>
                     { searchedPlaylists.map(playlist => (
@@ -98,8 +122,9 @@ const SearchPage = ({ playlists, songs, profiles }) => {
                         )
                     ))}
                 </div>
-            ) : <div></div> }
-            { searchedSongs.length > 0 && <h1>Songs</h1> }
+            ) : <div className='no_results'>No Results</div> }
+            <h1 className='all_div_h1'>Songs</h1>
+            {/* {console.log('---------------------- Searched Songs: ', searchedSongs, '-----------------------')} */}
             { searchedSongs.length > 0 ? (
                 <div className='all_songs'>
                     { searchedSongs.map(song => (
@@ -122,7 +147,7 @@ const SearchPage = ({ playlists, songs, profiles }) => {
                         )
                     ))}
                 </div>
-            ) :  <div></div> }
+            ) :  <div className='no_results'>No Results</div> }
         </div>
     );
 };
