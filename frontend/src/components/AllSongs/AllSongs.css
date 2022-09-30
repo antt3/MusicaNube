@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 25px;
 }
 
 .all_playlists {
@@ -27,9 +28,16 @@
 }
 
 .playlistImg:hover {
-    text-shadow: 1px 1px 2px grey;
-    transition: .2s;
+    box-shadow: 3px 5px 8px black;
+    transition: .3s;
     cursor: pointer;
+}
+
+#playlistImg {
+    grid-column: 2;
+    grid-row: 1;
+    height: 200px;
+    width: 200px;
 }
 
 .playlist_name {
@@ -135,6 +143,6 @@
 .add_playlist {
     grid-column: 3 / 5;
     grid-row: 2;
-    
+
 }
 

@@ -31,7 +31,7 @@ const PlaylistSongForm = ({ sessionUser, setShowModal, playlists, song }) => {
                 <div className='all_playlists'>
                     { filteredPlaylists.map(playlist => (
                         <div key={playlist.id} className='playlist'>
-                            <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} className='playlistImg'></img>
+                            <img src={playlist.pic ? playlist.pic : demoPlaylistPic} alt={playlist.name} id='playlistImg'></img>
                             <p className='playlist_name'>{playlist.name}</p>
                             <button className='playlist_username' onClick={e => onClick(e, playlist)}>Add</button>
                         </div>

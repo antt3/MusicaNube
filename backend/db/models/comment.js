@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     }
-  });
+  }, {});
 
   Comment.associate = function(models) {
     // associations can be defined here

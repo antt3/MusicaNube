@@ -56,9 +56,9 @@ const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
                             { filteredPlaylistSongs.length > 0 ? (
                                 <div className='sp_songs_div'>
                                     { filteredPlaylistSongs.map(playlistSong => (
-                                        <div className='sp_song_div' key={playlistSong.id}>
+                                        <div className='sp_song_div' key={playlistSong.id} onClick={()=> setCurrentSong(playlistSong.Song.link)}>
                                             <p className='sp_title_artist' onClick={(e)=> songClick(e, playlistSong.Song)}>{playlistSong.Song.title} - - - By: {playlistSong.Song.artist}</p>
-                                            <div className='sp_delete'><DeletePlaylistSongModal sessionUser={sessionUser} playlistSong={playlistSong.Song} /></div>
+                                            <div className='sp_delete'><DeletePlaylistSongModal sessionUser={sessionUser} playlistSong={playlistSong} /></div>
                                         </div>
                                     ))}
                                 </div>
@@ -72,7 +72,7 @@ const SinglePlaylist = ({ sessionUser, playlists, playlistSongs }) => {
                             { playlistSongs ? (
                                 <div className='sp_songs_div'>
                                     { filteredPlaylistSongs.map(playlistSong => (
-                                        <div className='sp_song_div' key={playlistSong.id}>
+                                        <div className='sp_song_div' key={playlistSong.id} onClick={()=> setCurrentSong(playlistSong.Song.link)}>
                                             <p className='sp_title_artist' onClick={(e)=> songClick(e, playlistSong.Song)}>{playlistSong.Song.title} - - - By: {playlistSong.Song.artist}</p>
                                             <div className='sp_delete'></div>
                                         </div>
