@@ -12,16 +12,20 @@ router.get('/', asyncHandler(async(req, res) => {
 }))
 
 router.post('/', asyncHandler(async(req, res) => {
-  const playlistSong = await PlaylistSong.create(req.body);
+  const { playlistId, songId } = req.body;
+  const newPlaylistSong = await PlaylistSong.create({ playlistId, songId });
+  const playlistSong = await PlaylistSong.findByPk(newPlaylistSong.id, {
+    include: Song
+  })
   return res.json(playlistSong);
 }))
 
 router.delete('/:id', asyncHandler(async(req, res) => {
-  const song = await Song.findByPk(req.params.id)
-  const playlistSong = await PlaylistSong.findOne({where: {songId: song.id}})
+  const playlistSongId = req.params.id;
+  const playlistSong = await PlaylistSong.findByPk(playlistSongId)
   if (playlistSong) {
-    await playlistSong.destroy()
-    return res.json(playlistSong)
+    await playlistSong.destroy();
+    return res.json(playlistSongId);
   } else {
         throw new Error('Cannot find playlist song.');
   }

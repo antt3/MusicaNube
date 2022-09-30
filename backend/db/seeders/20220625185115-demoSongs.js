@@ -121,6 +121,15 @@ module.exports = {
                     userId: 1,
                     createdAt: new Date(),
                     updatedAt: new Date()
+                },
+                {
+                    title: 'Self Care',
+                    artist: 'Mac Miller',
+                    songPic: 'https://townsquare.media/site/812/files/2018/07/mac-miller-swimming-cover.jpg?w=1080&q=75',
+                    link: 'https://soundcloud.com/larryfisherman/self-care',
+                    userId: 1,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
                 }
             ], {}
         );

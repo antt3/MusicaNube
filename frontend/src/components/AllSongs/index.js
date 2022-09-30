@@ -6,6 +6,7 @@ import EditSongModal from '../EditSongModal';
 import DeleteSongModal from '../DeleteSongModal';
 import EditPlaylistModal from '../EditPlaylistModal';
 import DeletePlaylistModal from '../DeletePlaylistModal';
+import PlaylistSongsFormModal from '../PlaylistSongsFormModal';
 import { useSong } from '../../context/songContext';
 import { fetchSongs } from '../../store/songsReducer';
 import { fetchPlaylists } from '../../store/playlistsReducer';
@@ -76,18 +77,20 @@ const AllSongs = ({ playlists, songs }) => {
                 <div className='all_songs'>
                     { Object.values(songs).map(song => (
                         song.userId === sessionUser.id ? (
-                            <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
+                            <div key={song.id} className="song" onClick={()=> setCurrentSong([song.link])}>
                                 <img src={song.songPic} alt={song.title} className='songImg'></img>
                                 <p className='title_artist' onClick={(e)=> songClick(e, song)}>{song.title} - - - By: {song.artist}</p>
                                 <p className='song_username' onClick={(e)=> profileClick(e, song)}>{song.User.username}</p>
                                 <EditSongModal sessionUser={sessionUser} song={song} />
                                 <DeleteSongModal sessionUser={sessionUser} song={song} />
+                                <PlaylistSongsFormModal sessionUser={sessionUser} song={song} playlists={playlists} />
                             </div>
                         ) : (
-                            <div key={song.id} className="song" onClick={()=> setCurrentSong(song.link)}>
+                            <div key={song.id} className="song" onClick={()=> setCurrentSong([song.link])}>
                                 <img src={song.songPic} alt={song.title} className='songImg'></img>
                                 <p className='title_artist' onClick={(e)=> songClick(e, song)}>{song.title} - - - By: {song.artist}</p>
                                 <p className='song_username' onClick={(e)=> profileClick(e, song)}>{song.User.username}</p>
+                                <PlaylistSongsFormModal sessionUser={sessionUser} song={song} playlists={playlists} />
                             </div>
                         )
                     ))}

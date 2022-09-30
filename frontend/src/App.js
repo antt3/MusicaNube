@@ -56,7 +56,7 @@ function App() {
                         <SingleSong sessionUser={sessionUser} songs={songs} comments={comments} />
                     </Route>
                     <Route exact path='/playlists/:id'>
-                        <SinglePlaylist sessionUser={sessionUser} songs={songs} playlists={playlists} playlistSongs={playlistSongs} />
+                        <SinglePlaylist sessionUser={sessionUser} playlists={playlists} playlistSongs={playlistSongs} />
                     </Route>
                     <Route exact path='/profiles/:id'>
                         <ProfilePage sessionUser={sessionUser} songs={songs} playlists={playlists} />

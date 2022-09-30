@@ -37,19 +37,19 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true
       }
     }
-  });
+  }, {});
 
   Song.associate = function(models) {
     const columnMapping = {
-      through: 'PlaylistsAndSongs',
+      through: 'PlaylistSongs',
       otherKey: 'playlistId',
       foreignKey: 'songId'
     };
 
     // associations can be defined here
     Song.belongsTo(models.User, { foreignKey: 'userId' });
-    Song.belongsToMany(models.Playlist, columnMapping);
     Song.hasMany(models.Comment, { foreignKey: 'songId', onDelete: 'CASCADE', hooks: true });
+    Song.hasMany(models.PlaylistSong, { foreignKey: 'songId', onDelete: 'CASCADE', hooks: true });
   };
 
   return Song;

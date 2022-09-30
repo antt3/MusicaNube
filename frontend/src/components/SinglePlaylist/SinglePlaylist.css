@@ -1,0 +1,107 @@
+.playlist_all_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all_playlist {
+    border: 1px solid grey;
+    display: flex;
+    width: 1000px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.single_playlist {
+    display: grid;
+    grid-template-columns: 250px 750px;
+    grid-template-rows: 250px 50px 50px 25px;
+    margin-bottom: 25px;
+}
+
+.single_playlistImg {
+    grid-column: 1;
+    grid-row: 1;
+    height: 249px;
+    width: 249px;
+    border: 1px solid grey;
+}
+
+.single_playlistImg:hover {
+    text-shadow: 1px 1px 2px grey;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.single_playlist_name {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.single_playlist_name:hover {
+    cursor: pointer;
+}
+
+.single_playlist_username {
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+.single_playlist_username:hover {
+    text-shadow: 1px 1px 2px grey;
+    transition: .2s;
+    cursor: pointer;
+}
+
+#single_playlist_buttons {
+    grid-column: 1;
+    grid-row: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sp_songs_div {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.sp_song_div {
+    display: grid;
+    grid-template-columns: 675px 25px;
+    grid-template-rows: 50px;
+    border-bottom: 1px solid grey;
+}
+
+.sp_title_artist {
+    grid-column: 1;
+    padding-left: 10px;
+}
+
+.sp_title_artist:hover {
+    text-shadow: 1px 1px 2px grey;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.sp_delete {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.no_songs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}

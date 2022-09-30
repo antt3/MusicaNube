@@ -34,11 +34,11 @@ export const fetchPlaylistSongs = () => async (dispatch) => {
     }
 }
 
-export const writePlaylistSong = (playlistSong) => async (dispatch) => {
+export const writePlaylistSong = (song) => async (dispatch) => {
     const response = await csrfFetch('/api/playlist-songs', {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(playlistSong)
+        body: JSON.stringify(song)
     });
     if(response.ok) {
         const playlistSong = await response.json();
@@ -48,7 +48,7 @@ export const writePlaylistSong = (playlistSong) => async (dispatch) => {
 }
 
 export const removePlaylistSong = (playlistSong) => async (dispatch) => {
-    const response = await csrfFetch(`/api/playlist-songs/${playlistSong}`, {
+    const response = await csrfFetch(`/api/playlist-songs/${playlistSong.id}`, {
         method: "DELETE"
     })
     if (response.ok) {

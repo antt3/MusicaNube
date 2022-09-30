@@ -33,10 +33,8 @@ function PlaylistForm({sessionUser, setShowModal}) {
             };
 
             const returnedPlaylist = await dispatch(playlistsReducer.writePlaylist(newPlaylist));
-            console.log('--------------------Returned Playlist 1: ', returnedPlaylist, '------------------------');
             
             if (returnedPlaylist) {
-                console.log('--------------------Returned Playlist 2: ', returnedPlaylist, '------------------------');
                 reset();
 
                 setShowModal(false);
