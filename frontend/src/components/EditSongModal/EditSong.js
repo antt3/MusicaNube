@@ -77,7 +77,7 @@ function EditSong({sessionUser, setShowModal, song}) {
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label>
-                    Title:
+                    Title
                     <input
                         type="text"
                         value={title}
@@ -86,7 +86,7 @@ function EditSong({sessionUser, setShowModal, song}) {
                     />
                 </label>
                 <label>
-                    Artist:
+                    Artist
                     <input
                         type="text"
                         value={artist}
@@ -95,7 +95,7 @@ function EditSong({sessionUser, setShowModal, song}) {
                     />
                 </label>
                 <label>
-                    Song Picture:
+                    Song Picture
                     <input
                         type="text"
                         value={songPic}
@@ -104,7 +104,7 @@ function EditSong({sessionUser, setShowModal, song}) {
                     />
                 </label>
                 <label>
-                    Link:
+                    Link
                     <input
                         type="text"
                         value={link}

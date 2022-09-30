@@ -25,6 +25,7 @@ input,
 textarea {
     padding: 5px;
     border: 1px solid black;
+    border-radius: 5px;
     font-size: 15px;
     margin: 10px;
     width: 400px;

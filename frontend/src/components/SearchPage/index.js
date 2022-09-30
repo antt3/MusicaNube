@@ -17,9 +17,6 @@ import './SearchPage.css';
 import '../AllSongs/AllSongs.css';
 
 const SearchPage = ({ playlists, songs, profiles }) => {
-    const [searchedSongs, setSearchedSongs] = useState([]);
-    const [searchedPlaylists, setSearchedPlaylists] = useState([]);
-    const [searchedUsers, setSearchedUsers] = useState([]);
     const sessionUser = useSelector((state) => state.session.user);
     const { searchedTerm } = useParams();
     const dispatch = useDispatch();
@@ -27,6 +24,21 @@ const SearchPage = ({ playlists, songs, profiles }) => {
     const { setCurrentSong } = useSong();
     const demoPlaylistPic = "https://i0.wp.com/www.gloryofthesnow.com/wp-content/uploads/2022/05/Music-Orange.png?fit=700%2C700&ssl=1";
     const demoProfilePic = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png';
+
+    const [searchedSongs, setSearchedSongs] = useState([]);
+    const [searchedPlaylists, setSearchedPlaylists] = useState([]);
+    const [searchedUsers, setSearchedUsers] = useState([]);
+    const [val, setVal] = useState([searchedTerm]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (val.length === 0) {
+            setVal(" ")
+        }
+
+        history.push(`/search/${val}`)
+    }
 
     const songClick = (e, song) => {
         e.stopPropagation();
@@ -55,9 +67,9 @@ const SearchPage = ({ playlists, songs, profiles }) => {
     useEffect(() => {
 
         ( async () => {
-        await dispatch(fetchPlaylists());
-        await dispatch(fetchSongs());
-        await dispatch(fetchProfiles());
+            await dispatch(fetchPlaylists());
+            await dispatch(fetchSongs());
+            await dispatch(fetchProfiles());
         })();
 
     }, [dispatch])

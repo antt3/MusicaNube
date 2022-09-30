@@ -71,7 +71,7 @@ function SongForm({sessionUser, setShowModal}) {
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label>
-                    Title:
+                    Title
                     <input
                         type="text"
                         value={title}
@@ -80,7 +80,7 @@ function SongForm({sessionUser, setShowModal}) {
                     />
                 </label>
                 <label>
-                    Artist:
+                    Artist
                     <input
                         type="text"
                         value={artist}
@@ -89,7 +89,7 @@ function SongForm({sessionUser, setShowModal}) {
                     />
                 </label>
                 <label>
-                    Song Picture:
+                    Song Picture
                     <input
                         type="text"
                         value={songPic}
@@ -98,7 +98,7 @@ function SongForm({sessionUser, setShowModal}) {
                     />
                 </label>
                 <label>
-                    Link:
+                    Link
                     <input
                         type="text"
                         value={link}
