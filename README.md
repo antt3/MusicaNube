@@ -1,7 +1,8 @@
 # MusicaNube
 Soundcloud Clone: React Solo Project
 
-## Live Link: https://musicanube.herokuapp.com/
+## This site is no longer live
+![musicanube-gif](https://github.com/antt3/MusicaNube/assets/95051166/435fbd1b-4eb9-4623-85f3-d3055c175e36)
 
 ### Starting The App
 1. run npm install on the frontend folder, the backend folder, and the parent folder.
